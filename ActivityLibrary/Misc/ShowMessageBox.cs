@@ -15,18 +15,14 @@ using System.Activities.Tracking;
 using System.Windows.Forms;
 using System.ComponentModel;
 
-namespace MeetupWfIntro.MeetupActivityLibrary.Misc
+namespace ActivityLibrary.Misc
 {
     /// <summary>
     /// Custom Activity that displays in a MessageBox the Value of the InputData argument
     /// </summary>
     public sealed class ShowMessageBox : CodeActivity
     {
-        #region Arguments
-        
-        public InArgument<Object> InputData { get; set; }
-
-        #endregion
+        public InArgument<object> InputData { get; set; }
 
         /// <summary>
         /// Constructor

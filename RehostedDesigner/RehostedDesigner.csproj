@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RehostedWorkflowDesigner</RootNamespace>
     <AssemblyName>Rehosted WF Designer</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -219,30 +219,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <None Include="defaultWorkflow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Compile Include="Views\StateMachineControl.xaml.cs">
+      <DependentUpon>StateMachineControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StateMachineTabs.xaml.cs">
+      <DependentUpon>StateMachineTabs.xaml</DependentUpon>
+    </Compile>
+    <None Include="packages.config">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="packages.config" />
-    <None Include="SampleWorkflow\meetup.xaml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="SampleWorkflow\AzureVmPowerOperations.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SampleWorkflow\LocalWinServicesCSV.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SampleWorkflow\SvcMonitoring.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="defaultWorkflowCSharp.xaml">
+    <None Include="defaultActivity.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -265,6 +251,7 @@
     <Compile Include="CSharpExpressionEditor\ExpressionValidationContext.cs" />
     <Compile Include="CSharpExpressionEditor\LineToHeightConverter.cs" />
     <Compile Include="CSharpExpressionEditor\ParserContext.cs" />
+    <Compile Include="Helpers\ActivityInstanceExtensions.cs" />
     <Compile Include="Helpers\QueryCompletionData.cs" />
     <Compile Include="CSharpExpressionEditor\RoslynExpressionEditor.xaml.cs">
       <DependentUpon>RoslynExpressionEditor.xaml</DependentUpon>
@@ -275,12 +262,19 @@
     <Compile Include="Helpers\CustomCommands.cs" />
     <Compile Include="Helpers\CustomTrackingParticipant.cs" />
     <Compile Include="Helpers\CustomWfDesigner.cs" />
-    <Compile Include="VbExpressionEditor\VbExpressionEditorInstance.cs" />
-    <Compile Include="VbExpressionEditor\VbExpressionEditorService.cs" />
+    <Compile Include="Helpers\ReflectionUtils.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\StateMachineControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StateMachineTabs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -307,7 +301,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\icon_app.ico" />
@@ -332,12 +328,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Menu\exit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ActivityLibraries\MeetupActivityLibrary\MeetupActivityLibrary.csproj">
-      <Project>{9212f9e7-b12c-4fba-af4d-ea9b42a2aafd}</Project>
-      <Name>MeetupActivityLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\ExpressionEditor\Event.png" />

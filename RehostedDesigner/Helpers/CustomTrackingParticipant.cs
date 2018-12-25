@@ -16,6 +16,7 @@ namespace RehostedWorkflowDesigner.Helpers
     {
         public string TrackData = String.Empty;
 
+
         /// <summary>
         /// Appends the current TrackingRecord data to the Workflow Execution Log
         /// </summary>
@@ -27,7 +28,16 @@ namespace RehostedWorkflowDesigner.Helpers
 
             if (recordEntry != null)
             {
-                TrackData += String.Format("[{0}] [{1}] [{2}]" + Environment.NewLine, recordEntry.EventTime.ToLocalTime().ToString(), recordEntry.Activity.Name, recordEntry.State);
+                
+                TrackData += String.Format("[{0}] [{1}] [{2}]" + Environment.NewLine, 
+                    recordEntry.EventTime.ToLocalTime().ToString(), 
+                    recordEntry.Activity.Name, 
+                    recordEntry.State);
+
+                if(recordEntry.Activity.TryGetInstance(out var instance))
+                {
+                    instance.GetPath();
+                }
             }
         }
     }
