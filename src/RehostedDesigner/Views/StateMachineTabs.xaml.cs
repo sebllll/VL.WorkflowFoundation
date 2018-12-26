@@ -33,11 +33,11 @@ namespace RehostedWorkflowDesigner.Views
             InitializeComponent();
         }
 
-        public void AddMachine(string name = null)
+        public StateMachineControl AddMachine(string name = null)
         {
             name = string.IsNullOrWhiteSpace(name) ? "Machine " + (MachineTabs.Items.Count + 1) : name;
-            var machineTab = new StateMachineControl() { WorkflowName = name };
-            var tab = new TabItem() { Header = name, Content = machineTab };
+            var machineControl = new StateMachineControl() { WorkflowName = name };
+            var tab = new TabItem() { Header = name, Content = machineControl };
             MachineTabs.SelectedIndex = MachineTabs.Items.Add(tab);
         }
     }
