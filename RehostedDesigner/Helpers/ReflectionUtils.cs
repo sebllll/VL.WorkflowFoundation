@@ -15,14 +15,19 @@ namespace RehostedWorkflowDesigner.Helpers
     {
 
         static PropertyInfo instancePi;
+        static PropertyInfo parentPi;
 
 
         static ReflectionUtils()
         {
-            //buffer
+            //activity instance
             var activityInfoType = Type.GetType("System.Activities.Tracking.ActivityInfo, System.Activities");
 
             instancePi = activityInfoType.GetPropertyWithName("Instance");
+
+            //var activityInfoType = Type.GetType("System.Activities, System.Activities");
+
+            //instancePi = activityInfoType.GetPropertyWithName("Parent");
         }
 
         static FieldInfo GetFieldWithName(this Type t, string name)

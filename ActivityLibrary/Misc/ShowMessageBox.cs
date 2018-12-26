@@ -15,7 +15,7 @@ using System.Activities.Tracking;
 using System.Windows.Forms;
 using System.ComponentModel;
 
-namespace ActivityLibrary.Misc
+namespace ActivityLibrary
 {
     /// <summary>
     /// Custom Activity that displays in a MessageBox the Value of the InputData argument

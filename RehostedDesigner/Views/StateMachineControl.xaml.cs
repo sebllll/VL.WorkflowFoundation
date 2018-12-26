@@ -15,6 +15,9 @@ using System.ComponentModel;
 using System.Timers;
 using System.Activities.Presentation;
 using System.Windows.Controls;
+using System.Activities.Statements;
+using System.Activities.Core.Presentation;
+using ActivityLibrary;
 
 namespace RehostedWorkflowDesigner.Views
 {
@@ -103,84 +106,43 @@ namespace RehostedWorkflowDesigner.Views
             {
                 _wfToolbox = new ToolboxControl();
 
-                // load Custom Activity Libraries into current domain
-                AppDomain.CurrentDomain.Load("ActivityLibrary");
-                // load System Activity Libraries into current domain; uncomment more if libraries below available on your system
-                AppDomain.CurrentDomain.Load("System.Activities");
-                AppDomain.CurrentDomain.Load("System.ServiceModel.Activities");
-                AppDomain.CurrentDomain.Load("System.Activities.Core.Presentation");
-                //AppDomain.CurrentDomain.Load("Microsoft.Workflow.Management");
-                //AppDomain.CurrentDomain.Load("Microsoft.Activities.Extensions");
-                //AppDomain.CurrentDomain.Load("Microsoft.Activities");
-                //AppDomain.CurrentDomain.Load("Microsoft.Activities.Hosting");
-                //AppDomain.CurrentDomain.Load("Microsoft.PowerShell.Utility.Activities");
-                //AppDomain.CurrentDomain.Load("Microsoft.PowerShell.Security.Activities");
-                //AppDomain.CurrentDomain.Load("Microsoft.PowerShell.Management.Activities");
-                //AppDomain.CurrentDomain.Load("Microsoft.PowerShell.Diagnostics.Activities");
-                //AppDomain.CurrentDomain.Load("Microsoft.Powershell.Core.Activities");
-                //AppDomain.CurrentDomain.Load("Microsoft.PowerShell.Activities");
+                // Create a category.  
+                var stateMachineCategory = new ToolboxCategory("StateMachine");
 
-                // get all loaded assemblies
-                IEnumerable<Assembly> appAssemblies = AppDomain.CurrentDomain.GetAssemblies().OrderBy(a => a.GetName().Name);
+                // Create Toolbox items.  
+                var tool1 = new ToolboxItemWrapper("System.Activities.Statements.StateMachine",
+                    typeof(StateMachine).Assembly.FullName, null, "StateMachine");
 
-                // check if assemblies contain activities
-                int activitiesCount = 0;
-                foreach (Assembly activityLibrary in appAssemblies)
-                {
-                    var wfToolboxCategory = new ToolboxCategory(activityLibrary.GetName().Name);
-                    var actvities = from
-                                        activityType in activityLibrary.GetExportedTypes()
-                                    where
-                                        (activityType.IsSubclassOf(typeof(Activity))
-                                        || activityType.IsSubclassOf(typeof(NativeActivity))
-                                        || activityType.IsSubclassOf(typeof(DynamicActivity))
-                                        || activityType.IsSubclassOf(typeof(ActivityWithResult))
-                                        || activityType.IsSubclassOf(typeof(AsyncCodeActivity))
-                                        || activityType.IsSubclassOf(typeof(CodeActivity))
-                                        || activityType == typeof(System.Activities.Core.Presentation.Factories.ForEachWithBodyFactory<Type>)
-                                        || activityType == typeof(System.Activities.Statements.FlowNode)
-                                        || activityType == typeof(System.Activities.Statements.State)
-                                        || activityType == typeof(System.Activities.Core.Presentation.FinalState)
-                                        || activityType == typeof(System.Activities.Statements.FlowDecision)
-                                        || activityType == typeof(System.Activities.Statements.FlowNode)
-                                        || activityType == typeof(System.Activities.Statements.FlowStep)
-                                        || activityType == typeof(System.Activities.Statements.FlowSwitch<Type>)
-                                        || activityType == typeof(System.Activities.Statements.ForEach<Type>)
-                                        || activityType == typeof(System.Activities.Statements.Switch<Type>)
-                                        || activityType == typeof(System.Activities.Statements.TryCatch)
-                                        || activityType == typeof(System.Activities.Statements.While))
-                                        && activityType.IsVisible
-                                        && activityType.IsPublic
-                                        && !activityType.IsNested
-                                        && !activityType.IsAbstract
-                                        && (activityType.GetConstructor(Type.EmptyTypes) != null)
-                                        && !activityType.Name.Contains('`') //optional, for extra cleanup
-                                    orderby
-                                        activityType.Name
-                                    select
-                                        new ToolboxItemWrapper(activityType);
+                var tool2 = new ToolboxItemWrapper("System.Activities.Statements.State",
+                    typeof(State).Assembly.FullName, null, "State");
 
-                    actvities.ToList().ForEach(wfToolboxCategory.Add);
+                var tool3 = new ToolboxItemWrapper("System.Activities.Core.Presentation.FinalState",
+                    typeof(FinalState).Assembly.FullName, null, "FinalState");
 
-                    if (wfToolboxCategory.Tools.Count > 0)
-                    {
-                        _wfToolbox.Categories.Add(wfToolboxCategory);
-                        activitiesCount += wfToolboxCategory.Tools.Count;
-                    }
-                }
-                //fixed ForEach
-                _wfToolbox.Categories.Add(
-                       new System.Activities.Presentation.Toolbox.ToolboxCategory
-                       {
-                           CategoryName = "CustomForEach",
-                           Tools = {
-                                new ToolboxItemWrapper(typeof(System.Activities.Core.Presentation.Factories.ForEachWithBodyFactory<>)),
-                                new ToolboxItemWrapper(typeof(System.Activities.Core.Presentation.Factories.ParallelForEachWithBodyFactory<>))
-                           }
-                       }
-                );
+                // Add the Toolbox items to the category.  
+                stateMachineCategory.Add(tool1);
+                stateMachineCategory.Add(tool2);
+                stateMachineCategory.Add(tool3);
 
-                LabelStatusBar.Content = String.Format("Loaded Activities: {0}", activitiesCount.ToString());
+                // Create a category.  
+                var primitiveCategory = new ToolboxCategory("Primitive");
+
+                // Create Toolbox items.  
+                var pTool1 = new ToolboxItemWrapper("System.Activities.Statements.Assign",
+                    typeof(Assign).Assembly.FullName, null, "Assign");
+
+                var pTool2 = new ToolboxItemWrapper("ActivityLibrary.Wakeup",
+                    typeof(Wakeup).Assembly.FullName, null, "Wakeup");
+
+                // Add the Toolbox items to the category.  
+                primitiveCategory.Add(pTool1);
+                primitiveCategory.Add(pTool2);
+
+                // Add the category to the ToolBox control.  
+                _wfToolbox.Categories.Add(stateMachineCategory);
+                _wfToolbox.Categories.Add(primitiveCategory);
+
+                LabelStatusBar.Content = String.Format("Loaded Activities");
                 WfToolboxBorder.Child = _wfToolbox;
             }
             catch (Exception ex)

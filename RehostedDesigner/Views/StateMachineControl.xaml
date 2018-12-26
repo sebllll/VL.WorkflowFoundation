@@ -22,28 +22,19 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="109" />
-            <RowDefinition Height="152*" />
-            <RowDefinition Height="35*" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="349*" />
+            <RowDefinition Height="60*" />
             <RowDefinition Height="21"/>
         </Grid.RowDefinitions>
-
-        <Ribbon x:Name="Ribbon" Grid.ColumnSpan="3">
-            <RibbonTab x:Name="WorkflowTab" Header="Workflow" Height="60" VerticalAlignment="Top">
-                <RibbonGroup x:Name="GroupWorkflowFile" Header="File">
-                    <RibbonButton x:Name="ButtonWorkflowNew" Command="ApplicationCommands.New" Label="New" LargeImageSource="/Rehosted WF Designer;component/Resources/Menu/new.png" />
-
-                    <RibbonButton x:Name="ButtonWorkflowOpen" Command="ApplicationCommands.Open" Label="Open" LargeImageSource="/Rehosted WF Designer;component/Resources/Menu/open.png" />
-                    <RibbonButton x:Name="ButtonWorkflowSave" Command="ApplicationCommands.Save" Label="Save"  LargeImageSource="/Rehosted WF Designer;component/Resources/Menu/save.png" />
-                </RibbonGroup>
-                <RibbonGroup x:Name="GroupWorkflowRuntime" Header="Runtime">
-                    <RibbonButton x:Name="ButtonWorkflowRun" Command="mw:CustomCommands.CmdWfRun" Label="Run" LargeImageSource="/Rehosted WF Designer;component/Resources/Menu/run.png" />
-                    <RibbonButton x:Name="ButtonWorkflowStop" Command="mw:CustomCommands.CmdWfStop" Label="Stop" LargeImageSource="/Rehosted WF Designer;component/Resources/Menu/stop.png" />
-                </RibbonGroup>
-            </RibbonTab>
-        </Ribbon>
-
-
+        <StackPanel Orientation="Horizontal">
+        <Button x:Name="ButtonWorkflowRun2" Command="mw:CustomCommands.CmdWfRun">
+            <Image Source="/RehostedWorkflowDesigner;component/Resources/Menu/run.png" />
+        </Button>
+        <Button x:Name="ButtonWorkflowStop2" Command="mw:CustomCommands.CmdWfRun">
+            <Image Source="/RehostedWorkflowDesigner;component/Resources/Menu/stop.png" />
+        </Button>
+        </StackPanel>
         <GridSplitter Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Stretch" ResizeDirection="Columns" Margin="0" Padding="0" Background = "Gray" Width = "3" />
         <GridSplitter Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Right" VerticalAlignment="Stretch" ResizeDirection="Columns" Margin="0" Padding="0" Background = "Gray" Width = "3" />
 

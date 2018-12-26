@@ -2,7 +2,6 @@
  xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
  xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
- xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
  xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
  xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
  xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
@@ -25,15 +24,12 @@
       <AssemblyReference>Microsoft.CodeAnalysis.VisualBasic.Workspaces</AssemblyReference>
       <AssemblyReference>Microsoft.CodeAnalysis.Workspaces</AssemblyReference>
       <AssemblyReference>Microsoft.CodeAnalysis.Workspaces.Desktop</AssemblyReference>
-      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
-      <AssemblyReference>RestSharp</AssemblyReference>
       <AssemblyReference>System</AssemblyReference>
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>System.Activities.Core.Presentation</AssemblyReference>
       <AssemblyReference>System.Activities.DurableInstancing</AssemblyReference>
       <AssemblyReference>System.Activities.Presentation</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
-      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.Composition.AttributedModel</AssemblyReference>
       <AssemblyReference>System.Composition.Convention</AssemblyReference>
@@ -42,12 +38,12 @@
       <AssemblyReference>System.Composition.TypedParts</AssemblyReference>
       <AssemblyReference>System.Data</AssemblyReference>
       <AssemblyReference>System.Drawing</AssemblyReference>
-      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
       <AssemblyReference>System.Web</AssemblyReference>
       <AssemblyReference>System.Windows.Controls.Ribbon</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
       <AssemblyReference>System.Workflow.Activities</AssemblyReference>
       <AssemblyReference>System.Xml</AssemblyReference>
       <AssemblyReference>Microsoft.CSharp</AssemblyReference>
@@ -55,26 +51,25 @@
       <AssemblyReference>System.Xml.Linq</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
       <AssemblyReference>System.Xaml</AssemblyReference>
-      <AssemblyReference>Twilio.Api</AssemblyReference>
       <AssemblyReference>UIAutomationProvider</AssemblyReference>
       <AssemblyReference>UIAutomationTypes</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
       <AssemblyReference>PresentationCore</AssemblyReference>
       <AssemblyReference>PresentationFramework</AssemblyReference>
-      <AssemblyReference>MeetupActivityLibrary</AssemblyReference>
+      <AssemblyReference>WindowsFormsIntegration</AssemblyReference>
+      <AssemblyReference>ActivityLibrary</AssemblyReference>
+      <AssemblyReference>System.Workflow.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
-      <AssemblyReference>Rehosted WF Designer</AssemblyReference>
+      <AssemblyReference>RehostedWorkflowDesigner</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <StateMachine sap2010:WorkflowViewState.IdRef="StateMachine_1">
     <StateMachine.InitialState>
       <State x:Name="__ReferenceID0" DisplayName="State1" sap2010:WorkflowViewState.IdRef="State_1">
         <State.Entry>
-          <Delay sap2010:WorkflowViewState.IdRef="Delay_1">
-            <InArgument x:TypeArguments="x:TimeSpan">
-              <mca:CSharpValue x:TypeArguments="x:TimeSpan">TimeSpan.FromSeconds(1)</mca:CSharpValue>
-            </InArgument>
-          </Delay>
+          <Delay Duration="00:00:01" sap2010:WorkflowViewState.IdRef="Delay_1" />
         </State.Entry>
         <State.Transitions>
           <Transition DisplayName="T1" sap2010:WorkflowViewState.IdRef="Transition_3">
@@ -91,7 +86,7 @@
     </StateMachine.InitialState>
     <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
-    <sads:DebugSymbol.Symbol>d1NDOlxEZXZcdnZ2dlx2bC1saWJzXFZMLldvcmtmbG93Rm91bmRhdGlvblxzcmNcUmVob3N0ZWREZXNpZ25lclxkZWZhdWx0QWN0aXZpdHkueGFtbAVFA18SAgEBRwdaDwIBBVIPVhcCAQJJC00TAgEISw9LZgIBCQ==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d1NDOlxEZXZcdnZ2dlx2bC1saWJzXFZMLldvcmtmbG93Rm91bmRhdGlvblxzcmNcUmVob3N0ZWREZXNpZ25lclxkZWZhdWx0QWN0aXZpdHkueGFtbAVEA1oSAgEBRgdVDwIBBU0PURcCAQJIC0hSAgEISBtIJQIBCQ==</sads:DebugSymbol.Symbol>
   </StateMachine>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -123,7 +118,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="State_1" sap:VirtualizedContainerService.HintSize="114,61">
+      <sap2010:ViewStateData Id="State_1" sap:VirtualizedContainerService.HintSize="326,472">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">63,109.5</av:Point>

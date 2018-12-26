@@ -52,41 +52,6 @@
     <Reference Include="Microsoft.Activities.Build">
       <Private>False</Private>
     </Reference>
-    <Reference Include="Microsoft.PowerShell.Activities, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MeetupWfIntro\bin\Debug\Microsoft.PowerShell.Activities.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.Powershell.Core.Activities, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MeetupWfIntro\bin\Debug\Microsoft.Powershell.Core.Activities.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.PowerShell.Diagnostics.Activities, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MeetupWfIntro\bin\Debug\Microsoft.PowerShell.Diagnostics.Activities.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.PowerShell.Management.Activities, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MeetupWfIntro\bin\Debug\Microsoft.PowerShell.Management.Activities.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.PowerShell.Security.Activities, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MeetupWfIntro\bin\Debug\Microsoft.PowerShell.Security.Activities.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.PowerShell.Utility.Activities, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MeetupWfIntro\bin\Debug\Microsoft.PowerShell.Utility.Activities.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.Powershell.Workflow.ServiceCore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MeetupWfIntro\bin\Debug\Microsoft.Powershell.Workflow.ServiceCore.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -136,6 +101,7 @@
   <ItemGroup>
     <Compile Include="Misc\ShowMessageBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VL\Wakeup.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

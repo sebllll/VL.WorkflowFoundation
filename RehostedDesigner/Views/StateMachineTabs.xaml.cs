@@ -23,13 +23,12 @@ namespace RehostedWorkflowDesigner.Views
         public StateMachineTabs()
         {
             InitializeComponent();
-            AddMachine();
         }
 
-        void AddMachine()
+        public void AddMachine()
         {
             var machineTab = new StateMachineControl();
-            var tab = new TabItem() { Header = "Machine", Content = machineTab };
+            var tab = new TabItem() { Header = "Machine " + MachineTabs.Items.Count, Content = machineTab };
             MachineTabs.Items.Add(tab);
         }
     }

@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RehostedDesigner", "RehostedDesigner\RehostedDesigner.csproj", "{CF40BB63-4741-41F1-9461-FA9A7319AB6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RehostedWorkflowDesigner", "RehostedDesigner\RehostedWorkflowDesigner.csproj", "{CF40BB63-4741-41F1-9461-FA9A7319AB6C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityLibrary", "ActivityLibrary\ActivityLibrary.csproj", "{9212F9E7-B12C-4FBA-AF4D-EA9B42A2AAFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RehostTest", "RehostTest\RehostTest.csproj", "{6B78D69F-2397-4D67-9FBD-805152112C12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,14 @@ Global
 		{9212F9E7-B12C-4FBA-AF4D-EA9B42A2AAFD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9212F9E7-B12C-4FBA-AF4D-EA9B42A2AAFD}.Release|x64.ActiveCfg = Release|x64
 		{9212F9E7-B12C-4FBA-AF4D-EA9B42A2AAFD}.Release|x64.Build.0 = Release|x64
+		{6B78D69F-2397-4D67-9FBD-805152112C12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B78D69F-2397-4D67-9FBD-805152112C12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B78D69F-2397-4D67-9FBD-805152112C12}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6B78D69F-2397-4D67-9FBD-805152112C12}.Debug|x64.Build.0 = Debug|Any CPU
+		{6B78D69F-2397-4D67-9FBD-805152112C12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B78D69F-2397-4D67-9FBD-805152112C12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B78D69F-2397-4D67-9FBD-805152112C12}.Release|x64.ActiveCfg = Release|Any CPU
+		{6B78D69F-2397-4D67-9FBD-805152112C12}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
