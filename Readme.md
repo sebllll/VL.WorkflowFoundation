@@ -1,8 +1,8 @@
-# .NET Rehosted Workflow Designer #
+# VL.WorkflowFoundation #
 
 ![Alt text](https://github.com/tebjan/VL.WorkflowFoundation/blob/master/screenshot.png?raw=true "Rehosted Workflow Designer")
 
-The solution contains:
+The repository contains:
 
 ## VL Nodes ##
 * StateMachine instance as process node
@@ -10,10 +10,11 @@ The solution contains:
 * State to get info and notifications from a selected state
 
 ## Workflow Designer ##
-* Workflow Designer - Rehosting in a Form with one tab per workflow
+* Workflow Designer - Rehosting in one Form with one tab per state machine
 * ToolboxControl - Selected for working with state machines
 * Workflow Execution - Retrieve real-time Execution Log (TrackData) and Execution Output(s)
 * Workflow Management - Store to file / Run / Stop
+* Nested State Machines - Build state machine hierachies (!)
 
 ## Custom Activities ##
 * Wakeup - Waits for a message to trigger transitions
@@ -21,7 +22,9 @@ The solution contains:
 ***
 
 ## Links ##
-* (My presentation at Microsoft Summit 2015) [Introduction to Windows Workflow Foundation](http://www.slideshare.net/orosandrei/windows-workflow-foundation-54773529)
+These links are from the original author who released the rehosting sample project, thanks!
+* Workflow Foundation Overview [Workflow Foundation Overview](https://andreioros.com/blog/windows-workflow-foundation-2017/)
+* My presentation at Microsoft Summit 2015 [Introduction to Windows Workflow Foundation](http://www.slideshare.net/orosandrei/windows-workflow-foundation-54773529)
 * Blog post about the WF Designer demo &amp; [Windows Workflow Foundation](http://andreioros.com/blog/windows-workflow-foundation-rehosted-designer/)
 * Project Showcased at [Microsoft Summit 2015](http://andreioros.com/blog/workflow-foundation-microsoft-summit/#more-92) & [Timisoara .NET Meetup 2](http://www.meetup.com/Timisoara-NET-Meetup/events/186254642/)
 * Twitter [@orosandrei](http://twitter.com/orosandrei)
