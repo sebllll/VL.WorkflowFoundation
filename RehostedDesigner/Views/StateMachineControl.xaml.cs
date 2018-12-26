@@ -19,6 +19,10 @@ using System.Activities.Statements;
 using System.Activities.Core.Presentation;
 using ActivityLibrary;
 using System.Activities.Presentation.Model;
+using System.Reactive.Subjects;
+using System.Reactive.Disposables;
+using System.Reactive.Linq;
+using System.Diagnostics;
 
 namespace RehostedWorkflowDesigner.Views
 {
@@ -32,17 +36,17 @@ namespace RehostedWorkflowDesigner.Views
         private CustomTrackingParticipant _executionLog;
         private WorkflowDesigner _wfDesigner;
         ModelTreeManager modelTreeManager;
+        public readonly IObservable<ExecutionMessage> Messages;
+        Subject<ExecutionMessage> subject = new Subject<ExecutionMessage>();
+        SerialDisposable disposable = new SerialDisposable();
 
         private string _currentWorkflowFile = string.Empty;
-        private Timer _timer;
-
 
         public StateMachineControl()
         {
             InitializeComponent();
-            _timer = new Timer(1000);
-            _timer.Enabled = false;
-            _timer.Elapsed += TrackingDataRefresh;
+
+            Messages = subject.Publish().RefCount();
 
             //load all available workflow activities from loaded assemblies 
             InitializeActivitiesToolbox();
@@ -50,11 +54,22 @@ namespace RehostedWorkflowDesigner.Views
             _wfDesigner = CustomWfDesigner.NewInstance();
 
             modelTreeManager = _wfDesigner.Context.Services.GetService<ModelTreeManager>();
+            modelTreeManager.EditingScopeCompleted += ModelTreeManager_EditingScopeCompleted;
 
             //initialize designer
             WfDesignerBorder.Child = _wfDesigner.View;
             WfPropertyBorder.Child = _wfDesigner.PropertyInspectorView;
 
+        }
+
+        private void ModelTreeManager_EditingScopeCompleted(object sender, EditingScopeEventArgs e)
+        {
+            if(e.EditingScope.HasEffectiveChanges)
+            foreach(var change in e.EditingScope.Changes)
+            {
+                var s = change.Description;
+                Debug.WriteLine(s);
+            }
         }
 
         public string WorkflowName
@@ -69,48 +84,7 @@ namespace RehostedWorkflowDesigner.Views
             }
         }
 
-        public string ExecutionLog
-        {
-            get
-            {
-                if (_executionLog != null)
-                    return _executionLog.TrackData;
-                else
-                    return string.Empty;
-            }
-            set { _executionLog.TrackData = value; NotifyPropertyChanged("ExecutionLog"); }
-        }
-
-
-        private void TrackingDataRefresh(Object source, ElapsedEventArgs e)
-        {
-            NotifyPropertyChanged("ExecutionLog");
-        }
-
-
-        private void consoleExecutionLog_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            consoleExecutionLog.ScrollToEnd();
-        }
-
-
-        /// <summary>
-        /// show execution log in ui
-        /// </summary>
-        private void UpdateTrackingData()
-        {
-            //retrieve & display execution log
-            //consoleExecutionLog.Dispatcher.Invoke(
-            //    System.Windows.Threading.DispatcherPriority.Normal,
-            //    new Action(
-            //        delegate ()
-            //        {
-            //            //consoleExecutionLog.Text = _executionLog.TrackData;
-            NotifyPropertyChanged("ExecutionLog");
-            //        }
-            //));
-        }
-
+        public int MaxExecutionLogLines { get; set; } = 50;
 
         /// <summary>
         /// Retrieves all Workflow Activities from the loaded assemblies and inserts them into a ToolboxControl 
@@ -146,12 +120,24 @@ namespace RehostedWorkflowDesigner.Views
                 var pTool1 = new ToolboxItemWrapper("System.Activities.Statements.Assign",
                     typeof(Assign).Assembly.FullName, null, "Assign");
 
-                var pTool2 = new ToolboxItemWrapper("ActivityLibrary.Wakeup",
+                var pTool2 = new ToolboxItemWrapper("System.Activities.Statements.Delay",
+                    typeof(Delay).Assembly.FullName, null, "Delay");
+
+                var pTool3 = new ToolboxItemWrapper("ActivityLibrary.Wakeup",
                     typeof(Wakeup).Assembly.FullName, null, "Wakeup");
+
+                var pTool4 = new ToolboxItemWrapper("System.Activities.Statements.Sequence",
+                    typeof(Sequence).Assembly.FullName, null, "Sequence");
+
+                var pTool5 = new ToolboxItemWrapper("System.Activities.Statements.WriteLine",
+                    typeof(WriteLine).Assembly.FullName, null, "WriteLine");
 
                 // Add the Toolbox items to the category.  
                 primitiveCategory.Add(pTool1);
                 primitiveCategory.Add(pTool2);
+                primitiveCategory.Add(pTool3);
+                primitiveCategory.Add(pTool4);
+                primitiveCategory.Add(pTool5);
 
                 // Add the category to the ToolBox control.  
                 _wfToolbox.Categories.Add(stateMachineCategory);
@@ -173,10 +159,6 @@ namespace RehostedWorkflowDesigner.Views
         {
             try
             {
-                //retrieve & display execution log
-                _timer.Stop();
-                UpdateTrackingData();
-
                 //retrieve & display execution output
                 foreach (var item in ev.Outputs)
                 {
@@ -215,18 +197,37 @@ namespace RehostedWorkflowDesigner.Views
             DynamicActivity activityExecute = ActivityXamlServices.Load(workflowStream, settings) as DynamicActivity;
 
             //configure workflow application
-            consoleExecutionLog.Text = String.Empty;
+            executionLog.Text = String.Empty;
             consoleOutput.Text = String.Empty;
             _executionLog = new CustomTrackingParticipant();
+            disposable.Disposable = _executionLog.Messages.Subscribe(InjectExecutionLog);
+            _wfApp?.Abort();
             _wfApp = new WorkflowApplication(activityExecute);
             _wfApp.Extensions.Add(_executionLog);
             _wfApp.Completed = WfExecutionCompleted;
 
             //execute 
             _wfApp.Run();
+        }
 
-            //enable timer for real-time logging
-            _timer.Start();
+        Queue<string> executionLogQueue = new Queue<string>();
+        private void InjectExecutionLog(ExecutionMessage m)
+        {
+                var recordEntry = m.TrackingRecord;
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    var s = string.Format("[{0}] [{1}] [{2}]",
+                        recordEntry.EventTime.ToLocalTime().ToString("HH:mm:ss"),
+                        recordEntry.Activity.Name,
+                        recordEntry.State);
+                    executionLogQueue.Enqueue(s);
+                    if (executionLogQueue.Count > MaxExecutionLogLines)
+                        executionLogQueue.Dequeue();
+
+                    executionLog.Text = string.Join(Environment.NewLine, executionLogQueue);
+                    executionLog.ScrollToEnd();
+                }));
+                subject.OnNext(m);
         }
 
         /// <summary>
@@ -235,15 +236,8 @@ namespace RehostedWorkflowDesigner.Views
         private void CmdWorkflowStop(object sender, ExecutedRoutedEventArgs e)
         {
             //manual stop
-            if (_wfApp != null)
-            {
-                _wfApp.Abort("Stopped by User");
-                _timer.Stop();
-                UpdateTrackingData();
-            }
-
+            _wfApp?.Abort("Stopped by User");
         }
-
 
         /// <summary>
         /// Save the current state of a Workflow

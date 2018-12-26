@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Activities.Tracking;
 using System.IO;
+using System.Activities;
+using System.Reactive.Subjects;
+using System.Reactive.Linq;
 
 namespace RehostedWorkflowDesigner.Helpers
 {
@@ -14,8 +17,13 @@ namespace RehostedWorkflowDesigner.Helpers
     /// </summary>
     class CustomTrackingParticipant : TrackingParticipant
     {
-        public string TrackData = String.Empty;
+        public IObservable<ExecutionMessage> Messages;
+        readonly Subject<ExecutionMessage> subject = new Subject<ExecutionMessage>();
 
+        public CustomTrackingParticipant()
+        {
+            Messages = subject;
+        }
 
         /// <summary>
         /// Appends the current TrackingRecord data to the Workflow Execution Log
@@ -28,17 +36,24 @@ namespace RehostedWorkflowDesigner.Helpers
 
             if (recordEntry != null)
             {
-                
-                TrackData += String.Format("[{0}] [{1}] [{2}]" + Environment.NewLine, 
-                    recordEntry.EventTime.ToLocalTime().ToString(), 
-                    recordEntry.Activity.Name, 
-                    recordEntry.State);
+                var message = new ExecutionMessage() { Sender = recordEntry.Activity.Name, State = recordEntry.State, TrackingRecord = recordEntry };
 
                 if(recordEntry.Activity.TryGetInstance(out var instance))
                 {
-                    instance.GetPath();
+                    //instance.GetPath();
+                    message.Instance = instance;
                 }
+
+                subject.OnNext(message);
             }
         }
+    }
+
+    public class ExecutionMessage
+    {
+        public string Sender { get; set; }
+        public string State { get; set; }
+        public ActivityStateRecord TrackingRecord { get; set; }
+        public ActivityInstance Instance { get; set; }
     }
 }
