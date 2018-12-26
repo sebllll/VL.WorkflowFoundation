@@ -1,39 +1,22 @@
 # .NET Rehosted Workflow Designer #
 
-![Alt text](https://github.com/orosandrei/Rehosted-Workflow-Designer/raw/master/rehosted-workflow-designer.png?raw=true ".NET Rehosted Workflow Designer")
+![Alt text](https://github.com/tebjan/VL.WorkflowFoundation/blob/master/screenshot.png?raw=true "Rehosted Workflow Designer")
 
 The solution contains:
 
-## WPF Desktop Application ##
-* Workflow Designer - Rehosting in a WPF Aplication 
-* ToolboxControl - Loading Workflow Activities from Assemblies
-* Workflow Execution - retrieve real-time Execution Log (TrackData) and Execution Output(s)
-* Workflow Management - New / Open / Save / Run / Stop
+## VL Nodes ##
+* StateMachine instance as process node
+* SendMessage to trigger statemachine transitions
+* State to get info and notifications from a selected state
 
-## Activity Library - Custom Activities ##
-* ShowMessageBox - displays in a MessageBox the Value of the InputData argument
-* GetGroupMembers - retrieves the Member Names and Count for a specified Meetup.Com Group
-* GetRSVPmembers - retrieves the Member Names and Count for a specified Meetup.Com Event
+## Workflow Designer ##
+* Workflow Designer - Rehosting in a Form with one tab per workflow
+* ToolboxControl - Selected for working with state machines
+* Workflow Execution - Retrieve real-time Execution Log (TrackData) and Execution Output(s)
+* Workflow Management - Store to file / Run / Stop
 
-## Demo Workflows ##
-### AzureVmPowerOperations.xaml ###
-* InArguments - VM & Service names
-* OutArguments - ActionPerformed
-* the workflow connects to Azure & changes the VM power state: if Powered On it will be power off, else powered on
-
-### LocalWinServicesCSV.xaml ###
-* InArguments - Status (default is "running")
-* the workflow retrieves the local windows services with the status defined by the inargument, writes the list to a file & opens it
-
-### SvcMonitoring.xaml ###
-* InArguments - Service
-* OutArguments - Log
-* the state machine workflows monitors the state of the specified windows service; if the state changes, the user gets notified via SMS
-
-### Meetup.xaml ###
-* InArguments - Meetup.COM REST API Key and RSVP (true / false)
-* If RSVP = false - the Workflow outputs a list with the Members of a Meetup.Com Group
-* If RSVP = true - the Workflow outputs a list with the Attending Members of a Meetup.Com Event
+## Custom Activities ##
+* Wakeup - Waits for a message to trigger transitions
 
 ***
 
