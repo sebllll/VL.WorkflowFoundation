@@ -36,9 +36,9 @@ namespace RehostedWorkflowDesigner.Views
         public void AddMachine(string name = null)
         {
             name = string.IsNullOrWhiteSpace(name) ? "Machine " + (MachineTabs.Items.Count + 1) : name;
-            var machineTab = new StateMachineControl(name);
+            var machineTab = new StateMachineControl() { WorkflowName = name };
             var tab = new TabItem() { Header = name, Content = machineTab };
-            MachineTabs.Items.Add(tab);
+            MachineTabs.SelectedIndex = MachineTabs.Items.Add(tab);
         }
     }
 }

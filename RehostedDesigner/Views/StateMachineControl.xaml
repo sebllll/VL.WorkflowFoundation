@@ -15,37 +15,32 @@
         <CommandBinding Command="mw:CustomCommands.CmdWfStop" Executed="CmdWorkflowStop" />
     </UserControl.CommandBindings>
 
-    <Grid x:Name="wfGrid">
+    <Grid x:Name="wfGrid" Background="White">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition Width="3*" />
-            <ColumnDefinition />
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25" />
-            <RowDefinition Height="349*" />
-            <RowDefinition Height="60*" />
-            <RowDefinition Height="21"/>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="89*" />
+            <RowDefinition Height="19*" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-        <Button x:Name="ButtonWorkflowRun2" Command="mw:CustomCommands.CmdWfRun">
-            <Image Source="/RehostedWorkflowDesigner;component/Resources/Menu/run.png" />
-        </Button>
-        <Button x:Name="ButtonWorkflowStop2" Command="mw:CustomCommands.CmdWfRun">
-            <Image Source="/RehostedWorkflowDesigner;component/Resources/Menu/stop.png" />
-        </Button>
+            <Button x:Name="ButtonWorkflowRun2" Command="mw:CustomCommands.CmdWfRun">
+                <Image Source="/RehostedWorkflowDesigner;component/Resources/Menu/run.png" />
+            </Button>
+            <Button x:Name="ButtonWorkflowStop2" Command="mw:CustomCommands.CmdWfRun">
+                <Image Source="/RehostedWorkflowDesigner;component/Resources/Menu/stop.png" />
+            </Button>
         </StackPanel>
         <GridSplitter Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Stretch" ResizeDirection="Columns" Margin="0" Padding="0" Background = "Gray" Width = "3" />
         <GridSplitter Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Right" VerticalAlignment="Stretch" ResizeDirection="Columns" Margin="0" Padding="0" Background = "Gray" Width = "3" />
-
-        <StatusBar HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="3" Height="21" Grid.ColumnSpan="3" Background="Gray">
-            <StatusBarItem x:Name="LabelStatusBar" Foreground="White" FontSize="12">
-            </StatusBarItem>
-        </StatusBar>
-        <TextBox Text="{Binding ExecutionLog, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:StateMachineControl}}" x:Name="consoleExecutionLog" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="1" Grid.Row="2" IsReadOnly="True" Margin="3,40,0,0" HorizontalAlignment="Left" Width="329" TextChanged="consoleExecutionLog_TextChanged"  />
-        <TextBox x:Name="consoleOutput" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="1" Grid.Row="2" IsReadOnly="True" Margin="348,40,3,0" />
-        <Label Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Height="34" Content="Execution Log" Margin="3,15,0,0" FontWeight="Bold" Width="89" />
-        <Label Grid.Column="1" Grid.Row="2" VerticalAlignment="Top" Height="34" Content="Output" Margin="348,15,0,0" FontWeight="Bold" />
+        <GridSplitter Grid.Column="1" Grid.Row="1" Grid.RowSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" ResizeDirection="Rows" Margin="0" Padding="0" Background = "Gray" Height = "3" />
+        <TextBox Margin="5,25,0,2" Text="{Binding ExecutionLog, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:StateMachineControl}}" x:Name="consoleExecutionLog" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="1" Grid.Row="2" IsReadOnly="True" HorizontalAlignment="Left" Width="340" TextChanged="consoleExecutionLog_TextChanged"  />
+        <TextBox Margin="350,25,5,2" x:Name="consoleOutput" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="1" Grid.Row="2" IsReadOnly="True" />
+        <Label Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Content="Execution Log" Margin="5,0,0,0" FontWeight="Bold"/>
+        <Label Grid.Column="1" Grid.Row="2" VerticalAlignment="Top" Height="26" Content="Console" Margin="350,0,0,0" FontWeight="Bold" />
 
         <Border Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Name="WfToolboxBorder"/>
         <Border Grid.Column="1" Grid.Row="1" Name="WfDesignerBorder" Padding="3"/>

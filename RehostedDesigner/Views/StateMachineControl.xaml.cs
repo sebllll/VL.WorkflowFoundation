@@ -31,12 +31,13 @@ namespace RehostedWorkflowDesigner.Views
         private ToolboxControl _wfToolbox;
         private CustomTrackingParticipant _executionLog;
         private WorkflowDesigner _wfDesigner;
+        ModelTreeManager modelTreeManager;
 
         private string _currentWorkflowFile = string.Empty;
         private Timer _timer;
 
 
-        public StateMachineControl(string name)
+        public StateMachineControl()
         {
             InitializeComponent();
             _timer = new Timer(1000);
@@ -48,8 +49,7 @@ namespace RehostedWorkflowDesigner.Views
 
             _wfDesigner = CustomWfDesigner.NewInstance();
 
-            var mtm = _wfDesigner.Context.Services.GetService<ModelTreeManager>();
-            mtm.Root.Properties["Name"].ComputedValue = name;
+            modelTreeManager = _wfDesigner.Context.Services.GetService<ModelTreeManager>();
 
             //initialize designer
             WfDesignerBorder.Child = _wfDesigner.View;
@@ -57,6 +57,17 @@ namespace RehostedWorkflowDesigner.Views
 
         }
 
+        public string WorkflowName
+        {
+            get
+            {
+                return (string)modelTreeManager.Root.Properties["Name"].ComputedValue;
+            }
+            set
+            {
+                modelTreeManager.Root.Properties["Name"].ComputedValue = value;
+            }
+        }
 
         public string ExecutionLog
         {
@@ -146,7 +157,6 @@ namespace RehostedWorkflowDesigner.Views
                 _wfToolbox.Categories.Add(stateMachineCategory);
                 _wfToolbox.Categories.Add(primitiveCategory);
 
-                LabelStatusBar.Content = String.Format("Loaded Activities");
                 WfToolboxBorder.Child = _wfToolbox;
             }
             catch (Exception ex)
@@ -187,8 +197,6 @@ namespace RehostedWorkflowDesigner.Views
             }
         }
 
-
-        #region Commands Handlers - Executed - New, Open, Save, Run
 
         /// <summary>
         /// Creates a new Workflow Application instance and executes the Current Workflow
@@ -294,9 +302,6 @@ namespace RehostedWorkflowDesigner.Views
                 }
             }
         }
-
-        #endregion
-
 
         #region INotify
         public event PropertyChangedEventHandler PropertyChanged;
