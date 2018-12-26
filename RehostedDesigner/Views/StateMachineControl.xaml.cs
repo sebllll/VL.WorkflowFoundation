@@ -18,6 +18,7 @@ using System.Windows.Controls;
 using System.Activities.Statements;
 using System.Activities.Core.Presentation;
 using ActivityLibrary;
+using System.Activities.Presentation.Model;
 
 namespace RehostedWorkflowDesigner.Views
 {
@@ -35,7 +36,7 @@ namespace RehostedWorkflowDesigner.Views
         private Timer _timer;
 
 
-        public StateMachineControl()
+        public StateMachineControl(string name)
         {
             InitializeComponent();
             _timer = new Timer(1000);
@@ -46,6 +47,9 @@ namespace RehostedWorkflowDesigner.Views
             InitializeActivitiesToolbox();
 
             _wfDesigner = CustomWfDesigner.NewInstance();
+
+            var mtm = _wfDesigner.Context.Services.GetService<ModelTreeManager>();
+            mtm.Root.Properties["Name"].ComputedValue = name;
 
             //initialize designer
             WfDesignerBorder.Child = _wfDesigner.View;

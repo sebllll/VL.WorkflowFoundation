@@ -15,9 +15,10 @@ namespace RehostedWorkflowDesigner
         /// </summary>
         public static StateMachineForm Instance => lazy.Value;
 
-        public static void AddWorkflow()
+        public static void AddWorkflow(string name = null)
         {
-            Instance.AddMachine();
+            Instance.AddMachine(name);
+
             if (!Instance.Visible)
                 Instance.Show();
         }

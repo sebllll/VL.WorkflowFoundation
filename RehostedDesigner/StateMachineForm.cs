@@ -17,9 +17,19 @@ namespace RehostedWorkflowDesigner
             InitializeComponent();
         }
 
-        internal void AddMachine()
+        internal void AddMachine(string name = null)
         {
-            stateMachineTabs1.AddMachine();
+            stateMachineTabs1.AddMachine(name);
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+
+            if (e.CloseReason == CloseReason.WindowsShutDown) return;
+
+            e.Cancel = true;
+            Hide();
         }
     }
 }

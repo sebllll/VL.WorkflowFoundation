@@ -235,14 +235,6 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </XamlAppDef>
-    <Page Include="Views\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="CSharpExpressionEditor\CSharpExpressionHelper.cs" />
     <Compile Include="CSharpExpressionEditor\ExpressionHelper.cs" />
     <Compile Include="CSharpExpressionEditor\ExpressionSelection.cs" />
@@ -261,10 +253,6 @@
     <Compile Include="Helpers\CustomTrackingParticipant.cs" />
     <Compile Include="Helpers\CustomWfDesigner.cs" />
     <Compile Include="Helpers\ReflectionUtils.cs" />
-    <Compile Include="Views\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Page Include="Views\StateMachineControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
