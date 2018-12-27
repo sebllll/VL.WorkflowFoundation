@@ -9,7 +9,7 @@ using System.Activities;
 using System.Reactive.Subjects;
 using System.Reactive.Linq;
 
-namespace RehostedWorkflowDesigner.Helpers
+namespace RehostedWorkflowDesigner
 {
 
     /// <summary>

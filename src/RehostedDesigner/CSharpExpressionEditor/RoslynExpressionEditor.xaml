@@ -7,7 +7,7 @@
              xmlns:sape="clr-namespace:System.Activities.Presentation.Expressions;assembly=System.Activities.Presentation"             
              xmlns:local="clr-namespace:RehostedWorkflowDesigner.CSharpExpressionEditor"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300" Margin="0,0,1,0">
     <sape:TextualExpressionEditor.Resources>
         <sapc:ArgumentToExpressionConverter x:Key="ArgumentToExpressionConverter" />
         <local:LineToHeightConverter x:Uid="res:LineToHeightConverter_1" x:Key="lineToHeightConverter" />

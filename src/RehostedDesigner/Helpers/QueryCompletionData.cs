@@ -6,7 +6,7 @@ using System;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace RehostedWorkflowDesigner.Helpers
+namespace RehostedWorkflowDesigner
 {
     public class QueryCompletionData : ICompletionData
     {

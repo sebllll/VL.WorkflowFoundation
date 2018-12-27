@@ -33,12 +33,22 @@ namespace RehostedWorkflowDesigner.Views
             InitializeComponent();
         }
 
-        public StateMachineControl AddMachine(string name = null)
+        public IStateMachineController AddMachine(string name = null)
         {
             name = string.IsNullOrWhiteSpace(name) ? "Machine " + (MachineTabs.Items.Count + 1) : name;
-            var machineControl = new StateMachineControl() { WorkflowName = name };
+            var machineControl = new StateMachineControl() { Name = name };
             var tab = new TabItem() { Header = name, Content = machineControl };
             MachineTabs.SelectedIndex = MachineTabs.Items.Add(tab);
+            return machineControl;
+        }
+
+        internal void RemoveMachine(IStateMachineController stateMachine)
+        {
+            var tab = MachineTabs.Items.OfType<TabItem>().FirstOrDefault(t => t.Content == stateMachine);
+            if (tab != null)
+            {
+                MachineTabs.Items.Remove(tab); 
+            }
         }
     }
 }

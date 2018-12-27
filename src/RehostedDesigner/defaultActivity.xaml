@@ -1,5 +1,6 @@
 ﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="RehostedWorkflowDesigner.Workflow" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="RehostedWorkflowDesigner.Workflow_1"
  xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:a="clr-namespace:ActivityLibrary;assembly=ActivityLibrary"
  xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
  xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
@@ -68,15 +69,22 @@
   <StateMachine sap2010:WorkflowViewState.IdRef="StateMachine_1">
     <StateMachine.InitialState>
       <State x:Name="__ReferenceID0" DisplayName="State1" sap2010:WorkflowViewState.IdRef="State_1">
-        <State.Entry>
-          <Delay Duration="00:00:01" sap2010:WorkflowViewState.IdRef="Delay_1" />
-        </State.Entry>
         <State.Transitions>
           <Transition DisplayName="T1" sap2010:WorkflowViewState.IdRef="Transition_3">
+            <Transition.Trigger>
+              <a:Wait sap2010:WorkflowViewState.IdRef="Wait_1" />
+            </Transition.Trigger>
             <Transition.To>
               <State x:Name="__ReferenceID1" DisplayName="State2" sap2010:WorkflowViewState.IdRef="State_3">
                 <State.Transitions>
-                  <Transition DisplayName="T2" sap2010:WorkflowViewState.IdRef="Transition_2" To="{x:Reference __ReferenceID0}" />
+                  <Transition DisplayName="T2" sap2010:WorkflowViewState.IdRef="Transition_2">
+                    <Transition.Trigger>
+                      <a:Wait sap2010:WorkflowViewState.IdRef="Wait_2" />
+                    </Transition.Trigger>
+                    <Transition.To>
+                      <x:Reference>__ReferenceID0</x:Reference>
+                    </Transition.To>
+                  </Transition>
                 </State.Transitions>
               </State>
             </Transition.To>
@@ -86,12 +94,13 @@
     </StateMachine.InitialState>
     <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
-    <sads:DebugSymbol.Symbol>d1NDOlxEZXZcdnZ2dlx2bC1saWJzXFZMLldvcmtmbG93Rm91bmRhdGlvblxzcmNcUmVob3N0ZWREZXNpZ25lclxkZWZhdWx0QWN0aXZpdHkueGFtbAVEA1oSAgEBRgdVDwIBBU0PURcCAQJIC0hSAgEISBtIJQIBCQ==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d1NDOlxEZXZcdnZ2dlx2bC1saWJzXFZMLldvcmtmbG93Rm91bmRhdGlvblxzcmNcUmVob3N0ZWREZXNpZ25lclxkZWZhdWx0QWN0aXZpdHkueGFtbAVFA2ISAgEBRwddDwIBBU4PWRcCAQJLD0tCAgEHUhdSSgIBBA==</sads:DebugSymbol.Symbol>
   </StateMachine>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="Delay_1" sap:VirtualizedContainerService.HintSize="200,22" />
-      <sap2010:ViewStateData Id="Transition_2">
+      <sap2010:ViewStateData Id="Wait_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Wait_2" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Transition_2" sap:VirtualizedContainerService.HintSize="430,507">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:PointCollection x:Key="ConnectorLocation">354.3,200.5 354.3,230.5 125.7,230.5 125.7,170.5</av:PointCollection>
@@ -100,7 +109,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="State_3" sap:VirtualizedContainerService.HintSize="114,61">
+      <sap2010:ViewStateData Id="State_3" sap:VirtualizedContainerService.HintSize="326,472">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">303,139.5</av:Point>
@@ -109,7 +118,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Transition_3">
+      <sap2010:ViewStateData Id="Transition_3" sap:VirtualizedContainerService.HintSize="430,507">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:PointCollection x:Key="ConnectorLocation">177,149.15 207,149.15 207,173.05 303,173.05</av:PointCollection>

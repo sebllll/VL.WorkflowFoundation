@@ -7,19 +7,24 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
-namespace RehostedWorkflowDesigner.Helpers
+namespace RehostedWorkflowDesigner
 {
     public static class ConsoleOutput
     {
         public static void AddTextBox(TextBox textBox)
         {
-            Console.SetOut(new ConsoleTextWriter(new TextBoxTextWriter(textBox), Console.Out));
+            var tbr = new TextBoxTextWriter(textBox);
+            var ctr = Console.Out as ConsoleTextWriter;
+            if(ctr != null)
+                Console.SetOut(new ConsoleTextWriter(ctr.writers.Concat(new[] { tbr })));
+            else
+                Console.SetOut(new ConsoleTextWriter(tbr, Console.Out));
         }
     }
 
     public class ConsoleTextWriter : TextWriter
     {
-        private IEnumerable<TextWriter> writers;
+        public IEnumerable<TextWriter> writers;
         public ConsoleTextWriter(IEnumerable<TextWriter> writers)
         {
             this.writers = writers.ToList();

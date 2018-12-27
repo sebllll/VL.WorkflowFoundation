@@ -215,6 +215,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\ConsoleTextWriter.cs" />
+    <Compile Include="IStateMachineController.cs" />
     <Compile Include="StateMachineForm.cs">
       <SubType>Form</SubType>
     </Compile>

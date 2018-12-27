@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:RehostedWorkflowDesigner.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             xmlns:mw="clr-namespace:RehostedWorkflowDesigner.Helpers">
+             xmlns:mw="clr-namespace:RehostedWorkflowDesigner"
+             x:Name="_this">
     <UserControl.CommandBindings>
         <CommandBinding Command="ApplicationCommands.New" Executed="CmdWorkflowNew"/>
         <CommandBinding Command="ApplicationCommands.Open" Executed="CmdWorkflowOpen"/>
@@ -14,7 +15,6 @@
         <CommandBinding Command="mw:CustomCommands.CmdWfRun" Executed="CmdWorkflowRun" />
         <CommandBinding Command="mw:CustomCommands.CmdWfStop" Executed="CmdWorkflowStop" />
     </UserControl.CommandBindings>
-
     <Grid x:Name="wfGrid" Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
@@ -26,12 +26,19 @@
             <RowDefinition Height="9*" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
+        <Label Padding="1" x:Name="filePathLabel" Content="{Binding ElementName=_this, Path=FilePath}" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="20"/>
+        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="ButtonWorkflowRun" Command="mw:CustomCommands.CmdWfRun">
                 <Image Source="/RehostedWorkflowDesigner;component/Resources/Menu/run.png" />
             </Button>
             <Button x:Name="ButtonWorkflowStop" Command="mw:CustomCommands.CmdWfStop">
                 <Image Source="/RehostedWorkflowDesigner;component/Resources/Menu/stop.png" />
+            </Button>
+            <Button x:Name="ButtonWorkflowSave" Command="ApplicationCommands.Save">
+                <Image Source="/RehostedWorkflowDesigner;component/Resources/Menu/save.png" />
+            </Button>
+            <Button x:Name="ButtonWorkflowOpen" Command="ApplicationCommands.Open">
+                <Image Source="/RehostedWorkflowDesigner;component/Resources/Menu/open.png" />
             </Button>
         </StackPanel>
         <GridSplitter Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Stretch" ResizeDirection="Columns" Margin="0" Padding="0" Background = "Gray" Width = "3" />

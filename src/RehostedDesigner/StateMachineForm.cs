@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RehostedWorkflowDesigner.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +13,16 @@ namespace RehostedWorkflowDesigner
 {
     public partial class StateMachineForm : Form
     {
+        
+
         internal StateMachineForm()
         {
             InitializeComponent();
         }
 
-        internal void AddMachine(string name = null)
+        internal IStateMachineController AddMachine(string name = null)
         {
-            stateMachineTabs1.AddMachine(name);
+            return stateMachineTabs1.AddMachine(name);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -30,6 +33,11 @@ namespace RehostedWorkflowDesigner
 
             e.Cancel = true;
             Hide();
+        }
+
+        internal void RemoveMachine(IStateMachineController stateMachine)
+        {
+            stateMachineTabs1.RemoveMachine(stateMachine);
         }
     }
 }

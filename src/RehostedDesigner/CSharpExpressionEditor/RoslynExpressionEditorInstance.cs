@@ -4,7 +4,6 @@ using ICSharpCode.AvalonEdit.Highlighting;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using RehostedWorkflowDesigner.Helpers;
 using System;
 using System.Activities.Presentation.Model;
 using System.Activities.Presentation.View;

@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Activities;
 using System.Activities.DynamicUpdate;
+using System.Diagnostics;
 
 namespace ActivityLibrary
 {
-    public sealed class Wakeup : NativeActivity
+    public sealed class WaitFor : NativeActivity
     {
-        public Wakeup()
+        public WaitFor()
         {
         }
 
-        public InArgument<string> BookmarkName { get; set; }
+        public string MessageName { get; set; }
 
         protected override bool CanInduceIdle
         {
@@ -27,11 +28,13 @@ namespace ActivityLibrary
 
         protected override void Execute(NativeActivityContext context)
         {
-            string name = this.BookmarkName.Get(context);
+            var activities = WorkflowInspectionServices.GetActivities(this);
+            string name = MessageName;
 
-            if (name == null)
+            if (string.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentException(string.Format("ReadLine {0}: BookmarkName cannot be null", this.DisplayName), "BookmarkName");
+                Debug.WriteLine("Bookmark name is empty");
+                return;
             }
 
             context.CreateBookmark(name);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RehostedWorkflowDesigner.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RehostedWorkflowDesigner
 {
-    public static class StateMachineFormService
+    public static class StateMachineService
     {
         static readonly Lazy<StateMachineForm> lazy = new Lazy<StateMachineForm>(() => new StateMachineForm());
 
@@ -15,13 +16,19 @@ namespace RehostedWorkflowDesigner
         /// </summary>
         public static StateMachineForm Instance => lazy.Value;
 
-        public static void AddWorkflow(string name = null)
+        public static IStateMachineController AddStateMachine(string name = null)
         {
-            Instance.AddMachine(name);
+            var result = Instance.AddMachine(name);
 
             if (!Instance.Visible)
                 Instance.Show();
+
+            return result;
         }
-        
+
+        public static void RemoveStateMachine(IStateMachineController stateMachine)
+        {
+            Instance.RemoveMachine(stateMachine);
+        }
     }
 }

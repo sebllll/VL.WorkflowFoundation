@@ -55,7 +55,7 @@
             this.Controls.Add(this.elementHost1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "StateMachineForm";
-            this.Text = "StateMachineForm";
+            this.Text = "State Machines";
             this.ResumeLayout(false);
 
         }
