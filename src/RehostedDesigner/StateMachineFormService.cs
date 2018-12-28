@@ -18,10 +18,10 @@ namespace RehostedWorkflowDesigner
 
         public static IStateMachineController AddStateMachine(string name = null)
         {
+            var result = Instance.AddMachine(name);
+
             if (!Instance.Visible)
                 Instance.Show();
-
-            var result = Instance.AddMachine(name);
 
             return result;
         }
@@ -29,6 +29,16 @@ namespace RehostedWorkflowDesigner
         public static void RemoveStateMachine(IStateMachineController stateMachine)
         {
             Instance.RemoveMachine(stateMachine);
+        }
+
+        public static void ShowEditor()
+        {
+            Instance.Show();
+        }
+
+        public static void HideEditor()
+        {
+            Instance.Hide();
         }
     }
 }

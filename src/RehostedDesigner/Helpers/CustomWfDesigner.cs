@@ -5,8 +5,16 @@ using System.Activities.Core.Presentation;
 using System.Activities.Presentation;
 using System.Activities.Presentation.View;
 using System.Activities.Statements;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Xaml;
+using System.Xml;
 
 namespace RehostedWorkflowDesigner
 {
@@ -27,19 +35,43 @@ namespace RehostedWorkflowDesigner
                 sourceFile = Path.Combine(AssemblyDirectory, _defaultActivity);
 
             var expressionEditorService = new RoslynExpressionEditorService();
-            ExpressionTextBox.RegisterExpressionActivityEditor(new CSharpValue<string>().Language, typeof(RoslynExpressionEditor), CSharpExpressionHelper.CreateExpressionFromString);            
+            ExpressionTextBox.RegisterExpressionActivityEditor(new CSharpValue<string>().Language, typeof(RoslynExpressionEditor), CSharpExpressionHelper.CreateExpressionFromString);
 
-            var _wfDesigner = new WorkflowDesigner();
-            _wfDesigner.Context.Services.GetService<DesignerConfigurationService>().TargetFrameworkName = new System.Runtime.Versioning.FrameworkName(".NETFramework", new Version(4, 6, 1));
-            _wfDesigner.Context.Services.GetService<DesignerConfigurationService>().LoadingFromUntrustedSourceEnabled = true;
-            _wfDesigner.Context.Services.Publish<IExpressionEditorService>(expressionEditorService);
+            var wfDesigner = new WorkflowDesigner();
+            var dcs = wfDesigner.Context.Services.GetService<DesignerConfigurationService>();
+            dcs.TargetFrameworkName = new System.Runtime.Versioning.FrameworkName(".NETFramework", new Version(4, 7, 2));
+            dcs.LoadingFromUntrustedSourceEnabled = true;
+            wfDesigner.Context.Services.Publish<IExpressionEditorService>(expressionEditorService);
 
             //associates all of the basic activities with their designers
             new DesignerMetadata().Register();
 
+            string temp = File.ReadAllText(Path.Combine(AssemblyDirectory, @"colors.xaml"));
+
+            StringReader reader = new StringReader(temp);
+            XmlReader xmlReader = XmlReader.Create(reader);
+            ResourceDictionary fontAndColorDictionary = (ResourceDictionary)System.Windows.Markup.XamlReader.Load(xmlReader);
+
+            //var keys = GetColorKeys();
+
+            //foreach (var key in keys)
+            //{
+            //    fontAndColorDictionary[key] = Brushes.Pink;
+            //}
+
+            Hashtable hashTable = new Hashtable();
+            foreach (var key in fontAndColorDictionary.Keys)
+            {
+                hashTable.Add(key, fontAndColorDictionary[key]);
+            }
+
+            wfDesigner.PropertyInspectorFontAndColorData = XamlServices.Save(hashTable);
+
             //load Workflow Xaml
-            _wfDesigner.Load(sourceFile);
-            return _wfDesigner;
+            wfDesigner.Load(sourceFile);
+            //var g = wfDesigner.View as Grid;
+            //g.Background = Brushes.Pink;
+            return wfDesigner;
         }
 
         public static string AssemblyDirectory
@@ -51,6 +83,12 @@ namespace RehostedWorkflowDesigner
                 string path = Uri.UnescapeDataString(uri.Path);
                 return Path.GetDirectoryName(path);
             }
+        }
+
+        public static IEnumerable<string> GetColorKeys()
+        {
+            return typeof(WorkflowDesignerColors).GetFields(BindingFlags.Public | BindingFlags.Static)
+                      .Where(f => f.FieldType == typeof(string) && f.Name.EndsWith("ColorKey") || f.Name.EndsWith("GradientBeginKey") || f.Name.EndsWith("GradientEndKey")).Select(fi => fi.GetValue(null)).Cast<string>();
         }
     }
 }

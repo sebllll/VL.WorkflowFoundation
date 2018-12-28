@@ -15,6 +15,7 @@ namespace RehostedWorkflowDesigner
     {
 
         static PropertyInfo instancePi;
+        public static Type internalStateType;
         static PropertyInfo parentPi;
 
 
@@ -25,9 +26,10 @@ namespace RehostedWorkflowDesigner
 
             instancePi = activityInfoType.GetPropertyWithName("Instance");
 
-            //var activityInfoType = Type.GetType("System.Activities, System.Activities");
+            internalStateType = Type.GetType("System.Activities.Statements.InternalState, System.Activities");
+            var activityInstanceType = Type.GetType("System.Activities.ActivityInstance, System.Activities");
 
-            //instancePi = activityInfoType.GetPropertyWithName("Parent");
+            parentPi = activityInstanceType.GetPropertyWithName("Parent");
         }
 
         static FieldInfo GetFieldWithName(this Type t, string name)
@@ -59,7 +61,13 @@ namespace RehostedWorkflowDesigner
         {
             //get internal instance property
             activityInstance = instancePi.GetValue(activityInfo) as ActivityInstance;
+            return activityInstance != null;
+        }
 
+        public static bool TryGetParent(this ActivityInstance activityInfo, out ActivityInstance activityInstance)
+        {
+            //get internal parent property
+            activityInstance = parentPi.GetValue(activityInfo) as ActivityInstance;
             return activityInstance != null;
         }
     }

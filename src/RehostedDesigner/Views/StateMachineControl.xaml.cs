@@ -356,22 +356,25 @@ namespace RehostedWorkflowDesigner.Views
         Queue<string> executionLogQueue = new Queue<string>();
         private void InjectExecutionLog(ExecutionMessage m)
         {
-                var recordEntry = m.TrackingRecord;
-                Dispatcher.BeginInvoke(new Action(() =>
-                {
-                    var s = string.Format("[{0}] [{1}] [{2}]",
-                        recordEntry.EventTime.ToLocalTime().ToString("HH:mm:ss"),
-                        recordEntry.Activity.Name,
-                        recordEntry.State);
+            var recordEntry = m.TrackingRecord;
+            var parent = m.ParentMachine;
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                var prefix = parent?.Activity?.DisplayName;
+                prefix = string.IsNullOrWhiteSpace(prefix) ? prefix : prefix + ".";
+                var s = string.Format("[{0}] [{1}] [{2}]",
+                    recordEntry.EventTime.ToLocalTime().ToString("HH:mm:ss"),
+                    prefix + recordEntry.Activity.Name,
+                    recordEntry.State);
 
-                    executionLogQueue.Enqueue(s);
-                    if (executionLogQueue.Count > MaxExecutionLogLines)
-                        executionLogQueue.Dequeue();
+                executionLogQueue.Enqueue(s);
+                if (executionLogQueue.Count > MaxExecutionLogLines)
+                    executionLogQueue.Dequeue();
 
-                    executionLog.Text = string.Join(Environment.NewLine, executionLogQueue);
-                    executionLog.ScrollToEnd();
-                }));
-                subject.OnNext(m);
+                executionLog.Text = string.Join(Environment.NewLine, executionLogQueue);
+                executionLog.ScrollToEnd();
+            }));
+            subject.OnNext(m);
         }
 
         /// <summary>

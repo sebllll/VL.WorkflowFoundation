@@ -8,6 +8,7 @@ using System.IO;
 using System.Activities;
 using System.Reactive.Subjects;
 using System.Reactive.Linq;
+using System.Activities.Statements;
 
 namespace RehostedWorkflowDesigner
 {
@@ -36,24 +37,38 @@ namespace RehostedWorkflowDesigner
 
             if (recordEntry != null)
             {
-                var message = new ExecutionMessage() { Sender = recordEntry.Activity.Name, State = recordEntry.State, TrackingRecord = recordEntry };
+                var message = new ExecutionMessage() { Sender = recordEntry.Activity.Name, ExecutionState = recordEntry.State, TrackingRecord = recordEntry };
 
                 if(recordEntry.Activity.TryGetInstance(out var instance))
                 {
-                    //instance.GetPath();
                     message.Instance = instance;
+                    message.ParentMachine = GetParentMachine(instance);
                 }
 
                 subject.OnNext(message);
             }
         }
+
+        private ActivityInstance GetParentMachine(ActivityInstance instance)
+        {
+            if(instance.TryGetParent(out var parent))
+            {
+                if (parent.Activity is StateMachine)
+                    return parent;
+                else
+                    return GetParentMachine(parent);
+            }
+
+            return null;
+        }
     }
 
     public class ExecutionMessage
     {
-        public string Sender { get; set; }
-        public string State { get; set; }
-        public ActivityStateRecord TrackingRecord { get; set; }
-        public ActivityInstance Instance { get; set; }
+        public string Sender { get; internal set; }
+        public string ExecutionState { get; internal set; }
+        public ActivityStateRecord TrackingRecord { get; internal set; }
+        public ActivityInstance Instance { get; internal set; }
+        public ActivityInstance ParentMachine { get; internal set; }
     }
 }

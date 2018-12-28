@@ -229,6 +229,11 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Page Include="CSharpExpressionEditor\RoslynExpressionEditor.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
