@@ -66,13 +66,18 @@ namespace RehostedWorkflowDesigner.Views
 
             Messages = subject.Publish().RefCount();
 
+        }
+
+        protected override void OnInitialized(EventArgs e)
+        {
+            base.OnInitialized(e);
+
             //load all available workflow activities from loaded assemblies 
             InitializeActivitiesToolbox();
 
             SetDesigner();
             WfPropertyBorder.Child = _wfDesigner.PropertyInspectorView;
             ConsoleOutput.AddTextBox(consoleOutput);
-
         }
 
         void RegisterCustomMetadata()

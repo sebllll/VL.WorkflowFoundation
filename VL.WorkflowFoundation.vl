@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" Id="QfLDkR046GLOoq5ePGhaSW" Version="0.94">
+  <Patch Id="CQtHkDZPirWQbmF3SaRpoB">
+    <Canvas Id="J85eeO2iIMsNl0Ap9uuT0x" DefaultCategory="WorkflowFoundation" CanvasType="FullCategory">
+      <!--
+
+    ************************ StateMachine ************************
+
+-->
+      <Node Name="StateMachine" Bounds="341,235" Id="JrmSMngRBoDO07t63iDcIo">
+        <p:NodeReference LastCategoryFullName="Primitive" LastSymbolSource="Builtin">
+          <Choice Kind="ContainerDefinition" Name="Process" />
+        </p:NodeReference>
+        <Patch Id="ULPNmtyQTg0LwsRr6LU4cG">
+          <Canvas Id="KuSPuVoJrtYNwBWuzQH6fd" CanvasType="Group">
+            <ControlPoint Id="MIMVYZP1IjGMghnnuHI4Rg" Bounds="290,391" />
+            <Pad Id="JXjX2KCB24POjAtum6eubu" SlotId="ROrEsyynjljMWl9SGr2GEo" Bounds="152,360" />
+            <Node Bounds="149,472,107,13" Id="QBxQBTIjZK3OzPOErq3qC1">
+              <p:NodeReference LastCategoryFullName="RehostedWorkflowDesigner.StateMachineService" LastSymbolSource="RehostedWorkflowDesigner.dll">
+                <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                <Choice Kind="OperationCallFlag" Name="RemoveStateMachine" />
+              </p:NodeReference>
+              <Pin Id="M41r2uQem7cQb7BquCONu9" Name="State Machine" Kind="InputPin" />
+            </Node>
+            <ControlPoint Id="VFCiUczhrcyP7lf2pVkHft" Bounds="656,240" />
+            <Node Bounds="611,416,95,22" Id="AdwVmVIAWIjQaxkmy0aOpf">
+              <p:NodeReference LastCategoryFullName="Control.StateMachineController" LastSymbolSource="VL.WorkflowFoundation.vl">
+                <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                <Choice Kind="OperationCallFlag" Name="SetName" />
+                <CategoryReference Kind="Category" Name="StateMachineController" NeedsToBeDirectParent="true" />
+              </p:NodeReference>
+              <Pin Id="A1RDLkusfjSN8lMHDgQ9n5" Name="Input" Kind="InputPin" />
+              <Pin Id="N2HiTKBWxCtPVRSs5gIRZl" Name="Value" Kind="InputPin" />
+              <Pin Id="D2lUZoGPefiNQ9BRJJAOfE" Name="Apply" Kind="InputPin" />
+              <Pin Id="VKd7XnLkJRTLFD6mLn3aCz" Name="Output" Kind="OutputPin" />
+            </Node>
+            <Node Bounds="700,358,67,13" Id="E1iHb44xuuwLYo5IKxhiAA">
+              <p:NodeReference LastCategoryFullName="Control" LastSymbolSource="CoreLibBasics.vl">
+                <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                <Choice Kind="ProcessAppFlag" Name="Changed" />
+                <CategoryReference Kind="Category" Name="Control" NeedsToBeDirectParent="true" />
+              </p:NodeReference>
+              <Pin Id="VW7vEAFdvjuMAZggurn6vJ" Name="Value" Kind="InputPin" />
+              <Pin Id="QsL5N9gRN72LbKxGPYdGcZ" Name="Result" Kind="OutputPin" />
+              <Pin Id="TkTOPDl3CeLO2AEB1zXBw8" Name="Unchanged" Kind="OutputPin" />
+            </Node>
+            <Node Bounds="149,225,89,13" Id="Se3wu4MbXKbPBdXEpSuW82">
+              <p:NodeReference LastCategoryFullName="RehostedWorkflowDesigner.StateMachineService" LastSymbolSource="RehostedWorkflowDesigner.dll">
+                <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                <CategoryReference Kind="AssemblyCategory" Name="RehostedWorkflowDesigner" />
+                <CategoryReference Kind="AssemblyCategory" Name="StateMachineService" />
+                <Choice Kind="OperationCallFlag" Name="AddStateMachine" />
+              </p:NodeReference>
+              <Pin Id="RRsP0WnIw4KOrf6LXkWLFe" Name="Name" Kind="InputPin" />
+              <Pin Id="JcKkQkSxz7hQIBy11sr4zx" Name="Result" Kind="OutputPin" />
+            </Node>
+            <Pad Id="KcBGG2Atj3ZOjO48NJ05FZ" SlotId="ISVjdqUkEvxNY3mtQB046m" Bounds="291,343" />
+            <Node Bounds="198,289,95,22" Id="KsLGjGOww6YQDpbPuJvquO">
+              <p:NodeReference LastCategoryFullName="Control.StateMachineController" LastSymbolSource="VL.WorkflowFoundation.vl">
+                <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                <Choice Kind="OperationCallFlag" Name="Messages" />
+                <CategoryReference Kind="Category" Name="StateMachineController" NeedsToBeDirectParent="true" />
+              </p:NodeReference>
+              <Pin Id="Nse5OskasGwNGLvHvXJoti" Name="Input" Kind="StateInputPin" />
+              <Pin Id="LPrS3OlCED6NEGofF8Wmyn" Name="Output" Kind="StateOutputPin" />
+              <Pin Id="FYrGZWkTQHnPT5OqDINuLE" Name="Messages" Kind="OutputPin" />
+            </Node>
+            <ControlPoint Id="DNxT9k7mmUTQJIvddjGQ6n" Bounds="201,391" />
+            <ControlPoint Id="BU4f8b6MqqRNwbQheMKuRJ" Bounds="496,149" />
+            <Node Bounds="451,325,95,13" Id="QJBzymp3qviMKBTdSIbkRG">
+              <p:NodeReference LastCategoryFullName="Control.StateMachineController" LastSymbolSource="VL.WorkflowFoundation.vl">
+                <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                <CategoryReference Kind="Category" Name="StateMachineController" NeedsToBeDirectParent="true" />
+                <Choice Kind="OperationCallFlag" Name="SetFilePath" />
+              </p:NodeReference>
+              <Pin Id="IPB0030JagIMZFvX9M8ekX" Name="Input" Kind="InputPin" />
+              <Pin Id="S0vdOa6oqvfNtYYIAqToNN" Name="Value" Kind="InputPin" />
+              <Pin Id="MGVwd392wQmMhAQTarIt9p" Name="Apply" Kind="InputPin" />
+              <Pin Id="U4NXInTGAO8OLmhZp02tsJ" Name="Output" Kind="OutputPin" />
+            </Node>
+            <Node Bounds="540,267,67,13" Id="Gsd7XcXy4XzOgPfTiwKdPu">
+              <p:NodeReference LastCategoryFullName="Control" LastSymbolSource="CoreLibBasics.vl">
+                <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                <Choice Kind="ProcessAppFlag" Name="Changed" />
+                <CategoryReference Kind="Category" Name="Control" NeedsToBeDirectParent="true" />
+              </p:NodeReference>
+              <Pin Id="TrVmwR2KbUULpnBmu5l36T" Name="Value" Kind="InputPin" />
+              <Pin Id="JmkeP4dIiisMdAM2pdAYZI" Name="Result" Kind="OutputPin" />
+              <Pin Id="NXcfgyP7WKnMafIt3GbD8A" Name="Unchanged" Kind="OutputPin" />
+            </Node>
+            <Pad Id="Q3ecVaRhwnMODRcOf4AYbE" SlotId="ROrEsyynjljMWl9SGr2GEo" Bounds="453,301" />
+            <Node Bounds="495,199,48,13" Id="FH29kzZ8SdsMhMATOl44tW">
+              <p:NodeReference LastCategoryFullName="IO.Path" LastSymbolSource="CoreLibBasics.vl">
+                <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                <CategoryReference Kind="Category" Name="Path" />
+                <Choice Kind="OperationCallFlag" Name="ToString" />
+              </p:NodeReference>
+              <Pin Id="VlSX8n4Ri2UN04neVagAlR" Name="Input" Kind="StateInputPin" />
+              <Pin Id="KGRzHx1vEA5O2GeW9IAFLZ" Name="Result" Kind="OutputPin" />
+            </Node>
+          </Canvas>
+          <Patch Id="SUicCozhzkYLg79Z9jbWpv" Name="Create" ParticipatingElements="Se3wu4MbXKbPBdXEpSuW82" />
+          <Patch Id="TuWBuJ1WEsOM5fchziRB4q" Name="Update">
+            <Pin Id="NAyShNETKYMMIssl0LSMNn" Name="Machine" Kind="OutputPin" />
+            <Pin Id="HMENHmlmlpgLgKnsAb8iHP" Name="Messages" Kind="OutputPin" Bounds="409,533" />
+            <Pin Id="FKLdXRu1WjXQA69s4SfQ3T" Name="File Path" Kind="InputPin" DefaultValue="">
+              <p:TypeAnnotation>
+                <Choice Kind="TypeFlag" Name="Path" />
+              </p:TypeAnnotation>
+            </Pin>
+            <Pin Id="Ou8kAIESEKgPSZMAdA2eDW" Name="Name" Kind="InputPin" Bounds="257,104" />
+          </Patch>
+          <ProcessDefinition Id="MY2Ed7KtGIlNhT2ydYLmcW">
+            <Fragment Id="GCaFMEbSZcAMBrE5jJpHAr" Patch="SUicCozhzkYLg79Z9jbWpv" Enabled="true" />
+            <Fragment Id="Mn9n2x4Rvf4NakcjZhU82N" Patch="TuWBuJ1WEsOM5fchziRB4q" Enabled="true" />
+          </ProcessDefinition>
+          <Link Id="V8fzLwTnseZOLeV5ZmtxwE" Ids="MIMVYZP1IjGMghnnuHI4Rg,HMENHmlmlpgLgKnsAb8iHP" IsHidden="true" />
+          <Link Id="HIHP0FR9rfVO8qeFxXE9aN" Ids="JXjX2KCB24POjAtum6eubu,M41r2uQem7cQb7BquCONu9" />
+          <Patch Id="MPbhdvBSNHHMOCe8bqEGLd" Name="Dispose" ParticipatingElements="QBxQBTIjZK3OzPOErq3qC1" />
+          <Slot Id="ROrEsyynjljMWl9SGr2GEo" Name="Machine" />
+          <Link Id="GbLngp85aW2La5mnQLiRjl" Ids="Ou8kAIESEKgPSZMAdA2eDW,VFCiUczhrcyP7lf2pVkHft" IsHidden="true" />
+          <Link Id="VFIWKNftbvKLT1a1RCSL4n" Ids="VFCiUczhrcyP7lf2pVkHft,VW7vEAFdvjuMAZggurn6vJ" />
+          <Link Id="SQBl2aR7j0uOh04EppSOvb" Ids="QsL5N9gRN72LbKxGPYdGcZ,D2lUZoGPefiNQ9BRJJAOfE" />
+          <Link Id="CZLQkQXYpgwNw0GuRRnGdw" Ids="VFCiUczhrcyP7lf2pVkHft,N2HiTKBWxCtPVRSs5gIRZl" />
+          <Link Id="SpBCx5zSB3uPXdU8qATMv7" Ids="JcKkQkSxz7hQIBy11sr4zx,JXjX2KCB24POjAtum6eubu" />
+          <Link Id="F6nQfxMM5SJLSESf3Sd9aj" Ids="KcBGG2Atj3ZOjO48NJ05FZ,MIMVYZP1IjGMghnnuHI4Rg" />
+          <Slot Id="ISVjdqUkEvxNY3mtQB046m" Name="Messages" />
+          <Link Id="E3ksdO5JMqlMEEtAezm4rY" Ids="JcKkQkSxz7hQIBy11sr4zx,Nse5OskasGwNGLvHvXJoti" />
+          <Link Id="IgXx2VVdnktNqCy61C4T5T" Ids="FYrGZWkTQHnPT5OqDINuLE,KcBGG2Atj3ZOjO48NJ05FZ" />
+          <Link Id="T4sHeW1K7tuLMMZIn7ROvr" Ids="JXjX2KCB24POjAtum6eubu,DNxT9k7mmUTQJIvddjGQ6n" />
+          <Link Id="JENCXd1Vz4fOBuy1dr8yva" Ids="DNxT9k7mmUTQJIvddjGQ6n,NAyShNETKYMMIssl0LSMNn" IsHidden="true" />
+          <Link Id="Gno7m8e4gyIMsu4WlTB5U0" Ids="JmkeP4dIiisMdAM2pdAYZI,MGVwd392wQmMhAQTarIt9p" />
+          <Link Id="GZTd4tZs96zLGy59LFlXn0" Ids="Q3ecVaRhwnMODRcOf4AYbE,IPB0030JagIMZFvX9M8ekX" />
+          <Link Id="J7Athhpo73eOHvHlvWVVcy" Ids="FKLdXRu1WjXQA69s4SfQ3T,BU4f8b6MqqRNwbQheMKuRJ" IsHidden="true" />
+          <Link Id="Iel2KhPcTrhPRaHq2jTonI" Ids="U4NXInTGAO8OLmhZp02tsJ,A1RDLkusfjSN8lMHDgQ9n5" />
+          <Link Id="Kgs8tsOmRSzLEi00zBQtPS" Ids="BU4f8b6MqqRNwbQheMKuRJ,VlSX8n4Ri2UN04neVagAlR" />
+          <Link Id="HXVh4MT9yFFMP7bpN2G1pL" Ids="KGRzHx1vEA5O2GeW9IAFLZ,TrVmwR2KbUULpnBmu5l36T" />
+          <Link Id="RKY4quvHnRUOaeDfQkUd6K" Ids="KGRzHx1vEA5O2GeW9IAFLZ,S0vdOa6oqvfNtYYIAqToNN" />
+        </Patch>
+      </Node>
+      <Canvas Id="Bx54BjWdI9FNqiGCabtdpW" Name="Advanced" Position="343,366">
+        <!--
+
+    ************************ StateMachineController ************************
+
+-->
+        <Node Name="StateMachineController" Bounds="385,263" Id="TfPZj4u45IbLa3B3JufWJ6">
+          <p:NodeReference>
+            <Choice Kind="ForwardDefinition" Name="Forward" />
+            <FullNameCategoryReference ID="Primitive" />
+          </p:NodeReference>
+          <p:TypeAnnotation LastCategoryFullName="RehostedWorkflowDesigner" LastSymbolSource="RehostedWorkflowDesigner.dll">
+            <Choice Kind="TypeFlag" Name="IStateMachineController" />
+          </p:TypeAnnotation>
+          <Patch Id="HwiedFKBVPTOgXODGP06y7">
+            <Canvas Id="Jx9be5u10JsLcrx5Tog0Rq" BordersChecked="false" CanvasType="Group" />
+            <ProcessDefinition Id="UfayzkSP4ziLPqgxDBYD6j" IsHidden="true" />
+          </Patch>
+        </Node>
+      </Canvas>
+      <!--
+
+    ************************ SendMessage ************************
+
+-->
+      <Node Name="SendMessage" Bounds="341,290" Id="IS3HoFG9WKyNNY3XzqdNHL">
+        <p:NodeReference LastCategoryFullName="Primitive" LastSymbolSource="Builtin">
+          <Choice Kind="ContainerDefinition" Name="Process" />
+        </p:NodeReference>
+        <Patch Id="OztHW2B5MnXMHl6B0OxCfj">
+          <Canvas Id="M6B22F4kCYpPEsyp7PCWgH" CanvasType="Group" />
+          <Patch Id="AaXnx2kT149PrniysaocTE" Name="Create" />
+          <Patch Id="LJCB0IX3q3YMbItUYuTVzs" Name="Update" />
+          <ProcessDefinition Id="IrZPBvUGeDlN6l7uGlBDTs">
+            <Fragment Id="DXPfuu6fAOAMoicWIdWKwG" Patch="AaXnx2kT149PrniysaocTE" Enabled="true" />
+            <Fragment Id="HjHO9PSNXT3NqNowGldHTs" Patch="LJCB0IX3q3YMbItUYuTVzs" Enabled="true" />
+          </ProcessDefinition>
+        </Patch>
+      </Node>
+      <!--
+
+    ************************ State ************************
+
+-->
+      <Node Name="State" Bounds="536,291" Id="GoSsPkLHUyiOMiwKwcGehZ">
+        <p:NodeReference LastCategoryFullName="Primitive" LastSymbolSource="Builtin">
+          <Choice Kind="ContainerDefinition" Name="Process" />
+        </p:NodeReference>
+        <Patch Id="IFSZI3HoUVYPX9VkA6u0OY">
+          <Canvas Id="Gu8XLexh5YNOyoSLBFcYg1" CanvasType="Group" />
+          <Patch Id="E2U1ov0BXQ2MH8f5dhmofS" Name="Create" />
+          <Patch Id="FsJ77NrxmYXMJff2kxtbDu" Name="Update" />
+          <ProcessDefinition Id="Lt7LqYqlG4pPw3RKDGS1RX">
+            <Fragment Id="BhRCFSb4E27L0Nb0iW3vkC" Patch="E2U1ov0BXQ2MH8f5dhmofS" Enabled="true" />
+            <Fragment Id="FFSk2qmTYs3Mm1n9xOtOGN" Patch="FsJ77NrxmYXMJff2kxtbDu" Enabled="true" />
+          </ProcessDefinition>
+        </Patch>
+      </Node>
+      <!--
+
+    ************************ SendMessage ************************
+
+-->
+      <Node Name="SendMessage" Bounds="726,203,145,131" Id="ArSIsjENieFOZmK3yD8ron">
+        <p:NodeReference LastCategoryFullName="Primitive" LastSymbolSource="Builtin">
+          <Choice Kind="OperationDefinition" Name="Operation" />
+        </p:NodeReference>
+        <Patch Id="PHupwsyThh9LjvQ06amjtk">
+          <Node Bounds="739,260,95,22" Id="BVZ18ep6bzALzMHhUrbtzm">
+            <p:NodeReference LastCategoryFullName="RehostedWorkflowDesigner.IStateMachineController" LastSymbolSource="RehostedWorkflowDesigner.dll">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="AssemblyCategory" Name="IStateMachineController" NeedsToBeDirectParent="true" />
+              <Choice Kind="OperationCallFlag" Name="ResumeBookmark" />
+            </p:NodeReference>
+            <Pin Id="AlmOqN5lOwsNXeSVAIGlBE" Name="Input" Kind="StateInputPin" />
+            <Pin Id="A4NzZBJSr94PlrsEyNZUF7" Name="Message" Kind="InputPin" />
+            <Pin Id="OBXhK8tnzSOM3wDscChvqW" Name="Value" Kind="InputPin" />
+            <Pin Id="DjnxPWXKl6HMNM9dJ5BIux" Name="Output" Kind="StateOutputPin" />
+          </Node>
+          <ControlPoint Id="OvjMAki7bx1OVnymRH6xIe" Bounds="740,219" />
+          <Link Id="MUaZ9D4XebkNUtHwg0OoDU" Ids="OvjMAki7bx1OVnymRH6xIe,AlmOqN5lOwsNXeSVAIGlBE" />
+          <Link Id="PWaZs3CRJIDPFbsaTuF6zm" Ids="B1vDt8PE7iTOfONf5Sqcph,OvjMAki7bx1OVnymRH6xIe" IsHidden="true" />
+          <ControlPoint Id="R3fdzfEpl3ELSzW0N7NrfN" Bounds="810,222" />
+          <Link Id="LUUVQvrOFV9PbLLHH11IhD" Ids="R3fdzfEpl3ELSzW0N7NrfN,A4NzZBJSr94PlrsEyNZUF7" />
+          <Link Id="GggHcUtTuR7LiF2HCRefVg" Ids="ViHcI9o9VQZP9xkekh7CLA,R3fdzfEpl3ELSzW0N7NrfN" IsHidden="true" />
+          <ControlPoint Id="RUZZzgyeTW3McSlQ0rbTjp" Bounds="741,315" />
+          <Link Id="GoI8WlggBinPQzlcJUPezP" Ids="DjnxPWXKl6HMNM9dJ5BIux,RUZZzgyeTW3McSlQ0rbTjp" />
+          <Link Id="RGqLpPFiePRO9wzphjXwqr" Ids="RUZZzgyeTW3McSlQ0rbTjp,OjLGVijirzmOCgJV22vatv" IsHidden="true" />
+          <Pin Id="B1vDt8PE7iTOfONf5Sqcph" Name="Input" Kind="InputPin" Bounds="770,243" />
+          <Pin Id="OjLGVijirzmOCgJV22vatv" Name="Output" Kind="OutputPin" Bounds="769,322" />
+          <Pin Id="ViHcI9o9VQZP9xkekh7CLA" Name="Message" Kind="InputPin" Bounds="837,241" />
+        </Patch>
+      </Node>
+      <!--
+
+    ************************ ExecutionMessage ************************
+
+-->
+      <Node Name="ExecutionMessage" Bounds="338,173" Id="TudEyTqL6xaNwYatG4YPw5">
+        <p:NodeReference>
+          <Choice Kind="ForwardDefinition" Name="Forward" />
+          <FullNameCategoryReference ID="Primitive" />
+        </p:NodeReference>
+        <p:TypeAnnotation LastCategoryFullName="RehostedWorkflowDesigner" LastSymbolSource="RehostedWorkflowDesigner.dll">
+          <Choice Kind="TypeFlag" Name="ExecutionMessage" />
+        </p:TypeAnnotation>
+        <Patch Id="EGfWe0BO74uNaSLR4Ji9OR">
+          <Canvas Id="VsXX4BEa2GqO0jP5Eev1UO" BordersChecked="false" CanvasType="Group" />
+          <ProcessDefinition Id="BXf1kwyN2VcPSDJ5vakfEQ" IsHidden="true" />
+        </Patch>
+      </Node>
+    </Canvas>
+  </Patch>
+  <NugetDependency Id="JyDW24pscZeL3cz5asZMAC" Location="VL.Core" Version="0.94.50-gf563f1b382" />
+  <NugetDependency Id="GIWycnJXGVlQMiHR8NbCdk" Location="VL.CoreLib" Version="0.94.50-gf563f1b382" />
+  <NugetDependency Id="MZZ5LK2aLz2LDZ2f4Q5om2" Location="VL.CoreLib.VVVV" Version="0.94.50-gf563f1b382" />
+  <PlatformDependency Id="VdBzzHhq8ZxMO6tqPpLFNV" Location="./lib/RehostedWorkflowDesigner.dll" />
+</Document>

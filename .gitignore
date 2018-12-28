@@ -70,3 +70,5 @@ packages/
 /.vs/RehostedWFdesignerShowcase/v15
 
 .vs
+lib/
+*~.xml

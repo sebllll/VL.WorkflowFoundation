@@ -18,10 +18,10 @@ namespace RehostedWorkflowDesigner
 
         public static IStateMachineController AddStateMachine(string name = null)
         {
-            var result = Instance.AddMachine(name);
-
             if (!Instance.Visible)
                 Instance.Show();
+
+            var result = Instance.AddMachine(name);
 
             return result;
         }
