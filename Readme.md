@@ -1,25 +1,27 @@
 # VL.WorkflowFoundation #
 
-![Alt text](https://github.com/tebjan/VL.WorkflowFoundation/blob/master/screenshot.png?raw=true "Rehosted Workflow Designer")
+![Rehosted Workflow Designer](https://github.com/tebjan/VL.WorkflowFoundation/blob/master/screenshot.png?raw=true "Rehosted Workflow Designer")
 
 The repository contains:
-
-## VL Nodes ##
-* StateMachine instance as process node
-* SendMessage to trigger statemachine transitions
-* State to get info and notifications from a selected state
 
 ## Workflow Designer ##
 * Workflow Designer - Rehosting in one Form with one tab per state machine
 * ToolboxControl - Selected for working with state machines
 * Workflow Execution - Retrieve real-time Execution Log (TrackData) and Execution Output(s)
 * Workflow Management - Store to file / Run / Stop
-* Nested State Machines - Build state machine hierachies (!)
+* Nested State Machines - Build state machine hierachies
+* IStateMachineControl - Interface to control a state machine by code
 
 ## Custom Activities ##
-* Wakeup - Waits for a message to trigger transitions
+* Wait - Waits for a message with name of parent transition, must be placed in the "Trigger" of a transition
+* WaitFor - Waits for a given message, can be placed anywhere
 
-***
+## VL Nodes ##
+* StateMachine instance as process node
+* SendMessage to trigger statemachine transitions
+* State to get info and notifications from a selected state
+
+![Patch With State Machine](https://github.com/tebjan/VL.WorkflowFoundation/blob/master/patch.png?raw=true "Patch With State Machine")
 
 ## Links ##
 These links are from the original author who released the rehosting sample project, thanks!
@@ -29,8 +31,7 @@ These links are from the original author who released the rehosting sample proje
 * Project Showcased at [Microsoft Summit 2015](http://andreioros.com/blog/workflow-foundation-microsoft-summit/#more-92) & [Timisoara .NET Meetup 2](http://www.meetup.com/Timisoara-NET-Meetup/events/186254642/)
 * Twitter [@orosandrei](http://twitter.com/orosandrei)
 
-***
-
+## Credits ##
 * MSDN [Windows Workflow Foundation](http://msdn.microsoft.com/en-us/library/dd489441(v=vs.110).aspx)
 * MSDN [What's new in WF 4.5](https://msdn.microsoft.com/en-us/library/hh305677.aspx)
 * [Roslyn C# Expression Editor](https://github.com/dmetzgar/wf-rehost-roslyn)
