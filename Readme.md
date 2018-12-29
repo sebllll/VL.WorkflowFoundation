@@ -1,7 +1,6 @@
 # VL.WorkflowFoundation #
 
-![Rehosted Workflow Designer](https://github.com/tebjan/VL.WorkflowFoundation/blob/master/screenshot.png?raw=true "Rehosted Workflow Designer")
-
+<img src="https://raw.githubusercontent.com/tebjan/VL.WorkflowFoundation/master/screenshot.png" width="640"/>
 The repository contains:
 
 ## Workflow Designer
@@ -23,7 +22,7 @@ The repository contains:
 * ActiveStates - Get a spread of active states
 * EditorWindow - Show/hide the designer
 
-![Patch With State Machine](https://github.com/tebjan/VL.WorkflowFoundation/blob/master/patch.png?raw=true "Patch With State Machine")
+<img src="https://raw.githubusercontent.com/tebjan/VL.WorkflowFoundation/master/patch.png" width="640"/>
 
 ## Links
 These links are from the original author who released the rehosting sample project, thanks!
