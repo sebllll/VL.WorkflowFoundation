@@ -7,7 +7,7 @@
     ************************ StateMachine ************************
 
 -->
-      <Node Name="StateMachine" Bounds="214,250" Id="JrmSMngRBoDO07t63iDcIo">
+      <Node Name="StateMachine" Bounds="111,249" Id="JrmSMngRBoDO07t63iDcIo">
         <p:NodeReference LastCategoryFullName="Primitive" LastSymbolSource="Builtin">
           <Choice Kind="ContainerDefinition" Name="Process" />
         </p:NodeReference>
@@ -225,7 +225,7 @@
           <Link Id="GviM7VcUgvlMWRRGoIxDeb" Ids="IJKpOvUKT5cQJmQ4lpHkpp,RJfUyLL7wCWPDsqrBScFpl" />
         </Patch>
       </Node>
-      <Canvas Id="Bx54BjWdI9FNqiGCabtdpW" Name="Advanced" Position="229,480">
+      <Canvas Id="Bx54BjWdI9FNqiGCabtdpW" Name="Advanced" Position="126,479">
         <!--
 
     ************************ StateMachineController ************************
@@ -503,7 +503,7 @@
     ************************ State ************************
 
 -->
-      <Node Name="State" Bounds="214,296" Id="GoSsPkLHUyiOMiwKwcGehZ">
+      <Node Name="State" Bounds="111,295" Id="GoSsPkLHUyiOMiwKwcGehZ">
         <p:NodeReference LastCategoryFullName="Primitive" LastSymbolSource="Builtin">
           <Choice Kind="ContainerDefinition" Name="Process" />
         </p:NodeReference>
@@ -623,12 +623,12 @@
     ************************ SendMessage ************************
 
 -->
-      <Node Name="SendMessage" Bounds="498,240,209,131" Id="ArSIsjENieFOZmK3yD8ron">
+      <Node Name="SendMessage" Bounds="348,236,238,131" Id="ArSIsjENieFOZmK3yD8ron">
         <p:NodeReference LastCategoryFullName="Primitive" LastSymbolSource="Builtin">
           <Choice Kind="OperationDefinition" Name="Operation" />
         </p:NodeReference>
         <Patch Id="PHupwsyThh9LjvQ06amjtk">
-          <Node Bounds="511,297,95,22" Id="BVZ18ep6bzALzMHhUrbtzm">
+          <Node Bounds="361,293,95,22" Id="BVZ18ep6bzALzMHhUrbtzm">
             <p:NodeReference LastCategoryFullName="RehostedWorkflowDesigner.IStateMachineController" LastSymbolSource="RehostedWorkflowDesigner.dll">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="AssemblyCategory" Name="IStateMachineController" NeedsToBeDirectParent="true" />
@@ -640,26 +640,30 @@
             <Pin Id="PlHeTsXt2ZVNLxTl3cDbP5" Name="Apply" Kind="InputPin" />
             <Pin Id="DjnxPWXKl6HMNM9dJ5BIux" Name="Output" Kind="StateOutputPin" />
           </Node>
-          <ControlPoint Id="OvjMAki7bx1OVnymRH6xIe" Bounds="512,256" />
+          <ControlPoint Id="OvjMAki7bx1OVnymRH6xIe" Bounds="362,252" />
           <Link Id="MUaZ9D4XebkNUtHwg0OoDU" Ids="OvjMAki7bx1OVnymRH6xIe,AlmOqN5lOwsNXeSVAIGlBE" />
           <Link Id="PWaZs3CRJIDPFbsaTuF6zm" Ids="B1vDt8PE7iTOfONf5Sqcph,OvjMAki7bx1OVnymRH6xIe" IsHidden="true" />
-          <ControlPoint Id="R3fdzfEpl3ELSzW0N7NrfN" Bounds="582,259" />
+          <ControlPoint Id="R3fdzfEpl3ELSzW0N7NrfN" Bounds="417,255" />
           <Link Id="LUUVQvrOFV9PbLLHH11IhD" Ids="R3fdzfEpl3ELSzW0N7NrfN,A4NzZBJSr94PlrsEyNZUF7" />
           <Link Id="GggHcUtTuR7LiF2HCRefVg" Ids="ViHcI9o9VQZP9xkekh7CLA,R3fdzfEpl3ELSzW0N7NrfN" IsHidden="true" />
-          <ControlPoint Id="RUZZzgyeTW3McSlQ0rbTjp" Bounds="513,352" />
+          <ControlPoint Id="RUZZzgyeTW3McSlQ0rbTjp" Bounds="363,348" />
           <Link Id="GoI8WlggBinPQzlcJUPezP" Ids="DjnxPWXKl6HMNM9dJ5BIux,RUZZzgyeTW3McSlQ0rbTjp" />
           <Link Id="RGqLpPFiePRO9wzphjXwqr" Ids="RUZZzgyeTW3McSlQ0rbTjp,OjLGVijirzmOCgJV22vatv" IsHidden="true" />
+          <ControlPoint Id="ENQjtOcve37NjEyIQyk7g6" Bounds="543,254" />
+          <Link Id="NWZ57V1hOuDP7J0tVRBOnQ" Ids="ENQjtOcve37NjEyIQyk7g6,PlHeTsXt2ZVNLxTl3cDbP5" />
+          <Link Id="QtpwDrMtbAoMM4RqK6xZxJ" Ids="ORzvFbfyIvALpHyPyxbMbK,ENQjtOcve37NjEyIQyk7g6" IsHidden="true" />
+          <ControlPoint Id="FsQ7ucre3VTOwzklhBHcCY" Bounds="479,254" />
+          <Link Id="T0rO8E25Q1ZQLgKh3T4Pc8" Ids="FsQ7ucre3VTOwzklhBHcCY,OBXhK8tnzSOM3wDscChvqW" />
+          <Link Id="GoTcFAQCyeOODmftzX2ZC7" Ids="PHLVSVRZpYlMRuIUPK1mst,FsQ7ucre3VTOwzklhBHcCY" IsHidden="true" />
           <Pin Id="B1vDt8PE7iTOfONf5Sqcph" Name="Input" Kind="InputPin" Bounds="770,243" />
           <Pin Id="OjLGVijirzmOCgJV22vatv" Name="Output" Kind="OutputPin" Bounds="769,322" />
           <Pin Id="ViHcI9o9VQZP9xkekh7CLA" Name="Message" Kind="InputPin" Bounds="837,241" />
-          <ControlPoint Id="ENQjtOcve37NjEyIQyk7g6" Bounds="664,256" />
-          <Link Id="NWZ57V1hOuDP7J0tVRBOnQ" Ids="ENQjtOcve37NjEyIQyk7g6,PlHeTsXt2ZVNLxTl3cDbP5" />
+          <Pin Id="PHLVSVRZpYlMRuIUPK1mst" Name="Value" Kind="InputPin" Bounds="490,255" />
           <Pin Id="ORzvFbfyIvALpHyPyxbMbK" Name="Send" Kind="InputPin" Bounds="857,238" DefaultValue="False">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
               <Choice Kind="TypeFlag" Name="Boolean" />
             </p:TypeAnnotation>
           </Pin>
-          <Link Id="QtpwDrMtbAoMM4RqK6xZxJ" Ids="ORzvFbfyIvALpHyPyxbMbK,ENQjtOcve37NjEyIQyk7g6" IsHidden="true" />
         </Patch>
       </Node>
       <!--
@@ -667,7 +671,7 @@
     ************************ ManageActiveStates (Internal) ************************
 
 -->
-      <Node Name="ManageActiveStates (Internal)" Bounds="444,483" Id="Ev4B5wxYJxvMrRX2N6OUlA">
+      <Node Name="ManageActiveStates (Internal)" Bounds="341,482" Id="Ev4B5wxYJxvMrRX2N6OUlA">
         <p:NodeReference>
           <Choice Kind="ContainerDefinition" Name="Process" />
           <FullNameCategoryReference ID="Primitive" />
@@ -793,7 +797,7 @@
     ************************ InternalState (Internal) ************************
 
 -->
-      <Node Name="InternalState (Internal)" Bounds="736,484" Id="JpP7bu4iTxrPmV4rJSCVHz">
+      <Node Name="InternalState (Internal)" Bounds="633,483" Id="JpP7bu4iTxrPmV4rJSCVHz">
         <p:NodeReference LastCategoryFullName="Primitive" LastSymbolSource="Builtin">
           <Choice Kind="ClassDefinition" Name="Class" />
         </p:NodeReference>
@@ -810,7 +814,7 @@
     ************************ EditorWindow ************************
 
 -->
-      <Node Name="EditorWindow" Bounds="789,243" Id="DO2mCiQpFNUNkzlqo8Torv">
+      <Node Name="EditorWindow" Bounds="686,242" Id="DO2mCiQpFNUNkzlqo8Torv">
         <p:NodeReference LastCategoryFullName="Primitive" LastSymbolSource="Builtin">
           <Choice Kind="ContainerDefinition" Name="Process" />
         </p:NodeReference>
@@ -875,7 +879,7 @@
     ************************ ActiveStates ************************
 
 -->
-      <Node Name="ActiveStates" Bounds="214,343" Id="VGPCNRwM8bMQExfnA2suma">
+      <Node Name="ActiveStates" Bounds="111,342" Id="VGPCNRwM8bMQExfnA2suma">
         <p:NodeReference LastCategoryFullName="Primitive" LastSymbolSource="Builtin">
           <Choice Kind="ContainerDefinition" Name="Process" />
         </p:NodeReference>

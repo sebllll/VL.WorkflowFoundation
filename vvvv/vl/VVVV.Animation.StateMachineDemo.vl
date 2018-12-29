@@ -50,6 +50,7 @@
               </p:NodeReference>
               <Pin Id="IpCYyzdhsjxOJeEX7WYnY0" Name="Input" Kind="InputPin" />
               <Pin Id="TZ1qMIy1jd4Nz9z01aJVuU" Name="Message" Kind="InputPin" />
+              <Pin Id="He67WKkkEN0NvrvW2Vo9KZ" Name="Value" Kind="InputPin" />
               <Pin Id="CSMBbbxqiMxP6Xuhb3DXIs" Name="Send" Kind="InputPin" />
               <Pin Id="D8MyNF2uhE5PnbyCYRlcK9" Name="Output" Kind="OutputPin" />
             </Node>
@@ -61,7 +62,7 @@
                 <p:buttonmode p:Assembly="VL.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
               </p:ValueBoxSettings>
             </Pad>
-            <Pad Id="KKApIdmQ9S4QQ67tEhqKrR" Comment="" Bounds="169,501,29,20" ShowValueBox="true" isIOBox="true" Value="Run">
+            <Pad Id="KKApIdmQ9S4QQ67tEhqKrR" Comment="" Bounds="155,501,29,20" ShowValueBox="true" isIOBox="true" Value="Run">
               <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
                 <Choice Kind="TypeFlag" Name="String" />
               </p:TypeAnnotation>
@@ -74,6 +75,7 @@
               </p:NodeReference>
               <Pin Id="AjwJ5mgksf8QDM6v0ov007" Name="Input" Kind="InputPin" />
               <Pin Id="J3OW9OxfiAgPtSSbBi6prj" Name="Message" Kind="InputPin" />
+              <Pin Id="LxYRNUCE2dpP0ZZWBsmZJv" Name="Value" Kind="InputPin" />
               <Pin Id="BeURGPOAlwQP2hkYIPB1Ci" Name="Send" Kind="InputPin" />
               <Pin Id="HUmOMKXcN4wM9RagBKDQSi" Name="Output" Kind="OutputPin" />
             </Node>
@@ -85,7 +87,7 @@
                 <p:buttonmode p:Assembly="VL.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
               </p:ValueBoxSettings>
             </Pad>
-            <Pad Id="DsqkGhwcL4JNZJ3kTcF1pd" Comment="" Bounds="170,724,35,20" ShowValueBox="true" isIOBox="true" Value="Stop">
+            <Pad Id="DsqkGhwcL4JNZJ3kTcF1pd" Comment="" Bounds="156,722,35,20" ShowValueBox="true" isIOBox="true" Value="Stop">
               <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
                 <Choice Kind="TypeFlag" Name="String" />
               </p:TypeAnnotation>
@@ -223,6 +225,7 @@
               </p:NodeReference>
               <Pin Id="USs6v8flQQbMMs8tiBkOZU" Name="Input" Kind="InputPin" />
               <Pin Id="P9GwlMQe2TDOM1MHLYxbP4" Name="Message" Kind="InputPin" />
+              <Pin Id="L654bD8L9GYNWgDWZdgmGG" Name="Value" Kind="InputPin" />
               <Pin Id="BWYpUoDnEsQN8gT1X9ZmIu" Name="Send" Kind="InputPin" />
               <Pin Id="V8FfbvcobxaLQ0VG8qIKSd" Name="Output" Kind="OutputPin" />
             </Node>
@@ -234,7 +237,7 @@
                 <p:buttonmode p:Assembly="VL.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
               </p:ValueBoxSettings>
             </Pad>
-            <Pad Id="Vxq685PKIXbOHJNvHvSFiz" Comment="" Bounds="170,608,93,20" ShowValueBox="true" isIOBox="true" Value="EndSubmachine">
+            <Pad Id="Vxq685PKIXbOHJNvHvSFiz" Comment="" Bounds="156,607,93,20" ShowValueBox="true" isIOBox="true" Value="EndSubmachine">
               <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
                 <Choice Kind="TypeFlag" Name="String" />
               </p:TypeAnnotation>

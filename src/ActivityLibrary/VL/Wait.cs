@@ -10,8 +10,9 @@ using System.Linq;
 
 namespace ActivityLibrary
 {
-    public sealed class Wait : NativeActivity
+    public sealed class Wait : NativeActivity<object>
     {
+        //public OutArgument<object> Result { get; set; }
         GetParentChain parentChain = new GetParentChain();
 
         public Wait()
@@ -44,7 +45,14 @@ namespace ActivityLibrary
                 return;
             }
 
-            context.CreateBookmark(name);
+            context.CreateBookmark(name, OnResumeBookmark);
+        }
+
+        public void OnResumeBookmark(NativeActivityContext context, Bookmark bookmark, object obj)
+        {
+            // When the Bookmark is resumed, assign its value to
+            // the Result argument.
+            Result.Set(context, obj);
         }
 
         private Constraint<Wait> SetMessageName()

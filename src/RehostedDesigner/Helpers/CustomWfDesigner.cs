@@ -39,7 +39,7 @@ namespace RehostedWorkflowDesigner
 
             var wfDesigner = new WorkflowDesigner();
             var dcs = wfDesigner.Context.Services.GetService<DesignerConfigurationService>();
-            dcs.TargetFrameworkName = new System.Runtime.Versioning.FrameworkName(".NETFramework", new Version(4, 7, 2));
+            dcs.TargetFrameworkName = new System.Runtime.Versioning.FrameworkName(".NETFramework", new Version(4, 6, 1));
             dcs.LoadingFromUntrustedSourceEnabled = true;
             wfDesigner.Context.Services.Publish<IExpressionEditorService>(expressionEditorService);
 

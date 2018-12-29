@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace ActivityLibrary
 {
-    public sealed class WaitFor : NativeActivity
+    public sealed class WaitFor : NativeActivity<object>
     {
         public WaitFor()
         {
@@ -37,8 +37,14 @@ namespace ActivityLibrary
                 return;
             }
 
-            context.CreateBookmark(name);
+            context.CreateBookmark(name, OnResumeBookmark);
         }
 
+        public void OnResumeBookmark(NativeActivityContext context, Bookmark bookmark, object obj)
+        {
+            // When the Bookmark is resumed, assign its value to
+            // the Result argument.
+            Result.Set(context, obj);
+        }
     }
 }
