@@ -414,8 +414,8 @@ namespace RehostedWorkflowDesigner.Views
                 var pTool4 = new ToolboxItemWrapper("ActivityLibrary.WaitFor",
                     typeof(ActivityLibrary.WaitFor).Assembly.FullName, null, "WaitFor");
 
-                var pTool5 = new ToolboxItemWrapper("System.Activities.Statements.Sequence",
-                   typeof(Sequence).Assembly.FullName, null, "Sequence");
+                //var pTool5 = new ToolboxItemWrapper("System.Activities.Statements.Sequence",
+                //   typeof(Sequence).Assembly.FullName, null, "Sequence");
 
                 //var pTool5 = new ToolboxItemWrapper("System.Activities.Statements.WriteLine",
                 //    typeof(WriteLine).Assembly.FullName, null, "WriteLine");
@@ -425,7 +425,7 @@ namespace RehostedWorkflowDesigner.Views
                 primitiveCategory.Add(pTool2);
                 primitiveCategory.Add(pTool3);
                 primitiveCategory.Add(pTool4);
-                primitiveCategory.Add(pTool5);
+                //primitiveCategory.Add(pTool5);
 
                 // Add the category to the ToolBox control.  
                 _wfToolbox.Categories.Add(stateMachineCategory);
