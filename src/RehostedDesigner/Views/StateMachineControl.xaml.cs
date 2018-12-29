@@ -36,7 +36,7 @@ namespace RehostedWorkflowDesigner.Views
     {
         private WorkflowApplication _wfApp;
         private ToolboxControl _wfToolbox;
-        private CustomTrackingParticipant _executionLog;
+        private ExecutionLogger _executionLog;
         private WorkflowDesigner _wfDesigner;
         ModelTreeManager modelTreeManager;
         public IObservable<ExecutionMessage> Messages { get; private set; }
@@ -77,7 +77,7 @@ namespace RehostedWorkflowDesigner.Views
 
             SetDesigner();
             WfPropertyBorder.Child = _wfDesigner.PropertyInspectorView;
-            ConsoleOutput.AddTextBox(consoleOutput);
+            //ConsoleOutput.AddTextBox(consoleOutput);
         }
 
         void RegisterCustomMetadata()
@@ -139,13 +139,15 @@ namespace RehostedWorkflowDesigner.Views
             }
         }
 
+        private Dictionary<string, bool> emptyStates = new Dictionary<string, bool>(0);
+        public IReadOnlyDictionary<string, bool> EnteredStates => _executionLog?.EnteredStates ?? emptyStates;
 
-        public void ResumeBookmark(string message, object value)
+        public void SendMessage(string message, object value)
         {
             _wfApp?.ResumeBookmark(message, value);
         }
 
-        public void Run()
+        public void Start()
         {
             CmdWorkflowRun(this, null);
         }
@@ -221,122 +223,53 @@ namespace RehostedWorkflowDesigner.Views
             WfPropertyBorder.Child = _wfDesigner.PropertyInspectorView;
         }
 
-        /// <summary>
-        /// Retrieves all Workflow Activities from the loaded assemblies and inserts them into a ToolboxControl 
-        /// </summary>
-        private void InitializeActivitiesToolbox()
-        {
-            try
-            {
-                _wfToolbox = new ToolboxControl();
-
-                // Create a category.  
-                var stateMachineCategory = new ToolboxCategory("StateMachine");
-
-                // Create Toolbox items.  
-                var tool1 = new ToolboxItemWrapper("System.Activities.Statements.StateMachine",
-                    typeof(StateMachine).Assembly.FullName, null, "StateMachine");
-
-                var tool2 = new ToolboxItemWrapper("System.Activities.Statements.State",
-                    typeof(State).Assembly.FullName, null, "State");
-
-                var tool3 = new ToolboxItemWrapper("System.Activities.Core.Presentation.FinalState",
-                    typeof(FinalState).Assembly.FullName, null, "FinalState");
-
-                // Add the Toolbox items to the category.  
-                stateMachineCategory.Add(tool1);
-                stateMachineCategory.Add(tool2);
-                stateMachineCategory.Add(tool3);
-
-                // Create a category.  
-                var primitiveCategory = new ToolboxCategory("Primitive");
-
-                // Create Toolbox items.  
-                var pTool1 = new ToolboxItemWrapper("System.Activities.Statements.Assign",
-                    typeof(Assign).Assembly.FullName, null, "Assign");
-
-                var pTool2 = new ToolboxItemWrapper("System.Activities.Statements.Delay",
-                    typeof(Delay).Assembly.FullName, null, "Delay");
-
-                var pTool3 = new ToolboxItemWrapper("ActivityLibrary.Wait",
-                    typeof(ActivityLibrary.Wait).Assembly.FullName, null, "Wait");           
-
-                var pTool4 = new ToolboxItemWrapper("ActivityLibrary.WaitFor",
-                    typeof(ActivityLibrary.WaitFor).Assembly.FullName, null, "WaitFor");
-
-                var pTool5 = new ToolboxItemWrapper("System.Activities.Statements.Sequence",
-                   typeof(Sequence).Assembly.FullName, null, "Sequence");
-
-                //var pTool5 = new ToolboxItemWrapper("System.Activities.Statements.WriteLine",
-                //    typeof(WriteLine).Assembly.FullName, null, "WriteLine");
-
-                // Add the Toolbox items to the category.  
-                primitiveCategory.Add(pTool1);
-                primitiveCategory.Add(pTool2);
-                primitiveCategory.Add(pTool3);
-                primitiveCategory.Add(pTool4);
-                primitiveCategory.Add(pTool5);
-
-                // Add the category to the ToolBox control.  
-                _wfToolbox.Categories.Add(stateMachineCategory);
-                _wfToolbox.Categories.Add(primitiveCategory);
-
-                WfToolboxBorder.Child = _wfToolbox;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-
-        /// <summary>
-        /// Retrieve Workflow Execution Logs and Workflow Execution Outputs
-        /// </summary>
-        private void WfExecutionCompleted(WorkflowApplicationCompletedEventArgs ev)
-        {
-            try
-            {
-                //retrieve & display execution output
-                foreach (var item in ev.Outputs)
-                {
-                    consoleOutput.Dispatcher.Invoke(
-                        System.Windows.Threading.DispatcherPriority.Normal,
-                        new Action(
-                            delegate ()
-                            {
-                                consoleOutput.Text += String.Format("[{0}] {1}" + Environment.NewLine, item.Key, item.Value);
-                            }
-                    ));
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
 
         /// <summary>
         /// Creates a new Workflow Application instance and executes the Current Workflow
         /// </summary>
         private void CmdWorkflowRun(object sender, ExecutedRoutedEventArgs e)
         {
+            _wfApp?.Abort();
+
+            var name = Name;
+            var m = new ExecutionMessage() { ExecutionState = "WorkflowStart", Sender = Name, ParentNames = new string[0] };
+            subject.OnNext(m);
+            var s = string.Format("[{0}] [{1}] [{2}]",
+                    DateTime.Now.ToString("HH:mm:ss"),
+                    m.Sender,
+                    m.ExecutionState);
+            LogExecution(s);
+
             var activityExecute = GetActivity();
 
             //configure workflow application
             executionLog.Text = string.Empty;
-            consoleOutput.Text = string.Empty;
-            _executionLog = new CustomTrackingParticipant();
+            //consoleOutput.Text = string.Empty;
+            _executionLog = new ExecutionLogger();
             disposable.Disposable = _executionLog.Messages.Subscribe(InjectExecutionLog);
-            _wfApp?.Abort();
+            
             _wfApp = new WorkflowApplication(activityExecute);
             _wfApp.Extensions.Add(_executionLog);
             _wfApp.Completed = WfExecutionCompleted;
+            _wfApp.Aborted = WfAborted;
 
             //execute 
             _wfApp.Run();
+        }
+
+        private void WfAborted(WorkflowApplicationAbortedEventArgs obj)
+        {
+            _executionLog?.ClearStates();
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                var m = new ExecutionMessage() { ExecutionState = "WorkflowStop", Sender = Name, ParentNames = new string[0] };
+                subject.OnNext(m);
+                var s = string.Format("[{0}] [{1}] [{2}]",
+                        DateTime.Now.ToString("HH:mm:ss"),
+                        m.Sender,
+                        m.ExecutionState);
+                LogExecution(s);
+            }));
         }
 
         private Activity GetActivity()
@@ -354,27 +287,29 @@ namespace RehostedWorkflowDesigner.Views
         }
 
         Queue<string> executionLogQueue = new Queue<string>();
+
         private void InjectExecutionLog(ExecutionMessage m)
         {
             var recordEntry = m.TrackingRecord;
-            var parent = m.ParentMachine;
             Dispatcher.BeginInvoke(new Action(() =>
             {
-                var prefix = parent?.Activity?.DisplayName;
-                prefix = string.IsNullOrWhiteSpace(prefix) ? prefix : prefix + ".";
                 var s = string.Format("[{0}] [{1}] [{2}]",
                     recordEntry.EventTime.ToLocalTime().ToString("HH:mm:ss"),
-                    prefix + recordEntry.Activity.Name,
+                    m.Address,
                     recordEntry.State);
-
-                executionLogQueue.Enqueue(s);
-                if (executionLogQueue.Count > MaxExecutionLogLines)
-                    executionLogQueue.Dequeue();
-
-                executionLog.Text = string.Join(Environment.NewLine, executionLogQueue);
-                executionLog.ScrollToEnd();
+                LogExecution(s);
             }));
             subject.OnNext(m);
+        }
+
+        private void LogExecution(string s)
+        {
+            executionLogQueue.Enqueue(s);
+            if (executionLogQueue.Count > MaxExecutionLogLines)
+                executionLogQueue.Dequeue();
+
+            executionLog.Text = string.Join(Environment.NewLine, executionLogQueue);
+            executionLog.ScrollToEnd();
         }
 
         /// <summary>
@@ -433,6 +368,102 @@ namespace RehostedWorkflowDesigner.Views
                 FilePath = dialogOpen.FileName;
                 Load();
                 FilePath = prev;
+            }
+        }
+
+        /// <summary>
+        /// Retrieves all Workflow Activities from the loaded assemblies and inserts them into a ToolboxControl 
+        /// </summary>
+        private void InitializeActivitiesToolbox()
+        {
+            try
+            {
+                _wfToolbox = new ToolboxControl();
+
+                // Create a category.  
+                var stateMachineCategory = new ToolboxCategory("StateMachine");
+
+                // Create Toolbox items.  
+                var tool1 = new ToolboxItemWrapper("System.Activities.Statements.StateMachine",
+                    typeof(StateMachine).Assembly.FullName, null, "StateMachine");
+
+                var tool2 = new ToolboxItemWrapper("System.Activities.Statements.State",
+                    typeof(State).Assembly.FullName, null, "State");
+
+                var tool3 = new ToolboxItemWrapper("System.Activities.Core.Presentation.FinalState",
+                    typeof(FinalState).Assembly.FullName, null, "FinalState");
+
+                // Add the Toolbox items to the category.  
+                stateMachineCategory.Add(tool1);
+                stateMachineCategory.Add(tool2);
+                stateMachineCategory.Add(tool3);
+
+                // Create a category.  
+                var primitiveCategory = new ToolboxCategory("Primitive");
+
+                // Create Toolbox items.  
+                var pTool1 = new ToolboxItemWrapper("System.Activities.Statements.Assign",
+                    typeof(Assign).Assembly.FullName, null, "Assign");
+
+                var pTool2 = new ToolboxItemWrapper("System.Activities.Statements.Delay",
+                    typeof(Delay).Assembly.FullName, null, "Delay");
+
+                var pTool3 = new ToolboxItemWrapper("ActivityLibrary.Wait",
+                    typeof(ActivityLibrary.Wait).Assembly.FullName, null, "Wait");
+
+                var pTool4 = new ToolboxItemWrapper("ActivityLibrary.WaitFor",
+                    typeof(ActivityLibrary.WaitFor).Assembly.FullName, null, "WaitFor");
+
+                var pTool5 = new ToolboxItemWrapper("System.Activities.Statements.Sequence",
+                   typeof(Sequence).Assembly.FullName, null, "Sequence");
+
+                //var pTool5 = new ToolboxItemWrapper("System.Activities.Statements.WriteLine",
+                //    typeof(WriteLine).Assembly.FullName, null, "WriteLine");
+
+                // Add the Toolbox items to the category.  
+                primitiveCategory.Add(pTool1);
+                primitiveCategory.Add(pTool2);
+                primitiveCategory.Add(pTool3);
+                primitiveCategory.Add(pTool4);
+                primitiveCategory.Add(pTool5);
+
+                // Add the category to the ToolBox control.  
+                _wfToolbox.Categories.Add(stateMachineCategory);
+                _wfToolbox.Categories.Add(primitiveCategory);
+
+                WfToolboxBorder.Child = _wfToolbox;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Retrieve Workflow Execution Logs and Workflow Execution Outputs
+        /// </summary>
+        private void WfExecutionCompleted(WorkflowApplicationCompletedEventArgs ev)
+        {
+            try
+            {
+                //retrieve & display execution output
+                foreach (var item in ev.Outputs)
+                {
+                    //consoleOutput.Dispatcher.Invoke(
+                    //    System.Windows.Threading.DispatcherPriority.Normal,
+                    //    new Action(
+                    //        delegate ()
+                    //        {
+                    //            consoleOutput.Text += String.Format("[{0}] {1}" + Environment.NewLine, item.Key, item.Value);
+                    //        }
+                    //));
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
 

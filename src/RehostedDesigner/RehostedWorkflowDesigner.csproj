@@ -219,7 +219,7 @@
     <Compile Include="StateMachineForm.Designer.cs">
       <DependentUpon>StateMachineForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="StateMachineFormService.cs" />
+    <Compile Include="StateMachineService.cs" />
     <Compile Include="Views\StateMachineControl.xaml.cs">
       <DependentUpon>StateMachineControl.xaml</DependentUpon>
     </Compile>
@@ -258,7 +258,7 @@
     <Compile Include="CSharpExpressionEditor\RoslynExpressionEditorService.cs" />
     <Compile Include="CSharpExpressionEditor\XamlUtilities.cs" />
     <Compile Include="Helpers\CustomCommands.cs" />
-    <Compile Include="Helpers\CustomTrackingParticipant.cs" />
+    <Compile Include="Helpers\ExecutionLogger.cs" />
     <Compile Include="Helpers\CustomWfDesigner.cs" />
     <Compile Include="Helpers\ReflectionUtils.cs" />
     <Page Include="Views\StateMachineControl.xaml">

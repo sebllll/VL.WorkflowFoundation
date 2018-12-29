@@ -37,7 +37,7 @@ namespace RehostTest
 
         private void button3_Click(object sender, EventArgs e)
         {
-            LatestMachine.ResumeBookmark(textBox2.Text, null);
+            LatestMachine.SendMessage(textBox2.Text, null);
         }
 
         private void button4_Click(object sender, EventArgs e)

@@ -34,6 +34,7 @@ namespace RehostedWorkflowDesigner
         public static void ShowEditor()
         {
             Instance.Show();
+            Instance.BringToFront();
         }
 
         public static void HideEditor()

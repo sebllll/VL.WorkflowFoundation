@@ -11,11 +11,12 @@ namespace RehostedWorkflowDesigner
         string Name { get; set; }
         string FilePath { get; set; }
 
-        void ResumeBookmark(string message, object value);
+        void SendMessage(string message, object value);
 
         IObservable<ExecutionMessage> Messages { get; }
+        IReadOnlyDictionary<string, bool> EnteredStates { get; }
 
-        void Run();
+        void Start();
         void Stop();
         void Load();
         void Save();

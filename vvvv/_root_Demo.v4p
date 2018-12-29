@@ -15,7 +15,7 @@
    <PACK Name="addonpack" Version="38.1.0">
    </PACK>
    <NODE systemname="StateMachineDemo (Animation)" filename="vl\VVVV.Animation.StateMachineDemo.vl" nodename="StateMachineDemo (Animation)" componentmode="Hidden" id="1">
-   <BOUNDS type="Node" left="3060" top="2655" width="100" height="100">
+   <BOUNDS type="Node" left="3015" top="2130" width="100" height="100">
    </BOUNDS>
    </NODE>
    </PATCH>
