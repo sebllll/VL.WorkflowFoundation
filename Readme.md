@@ -24,6 +24,8 @@ The repository contains:
 
 <img src="https://raw.githubusercontent.com/tebjan/VL.WorkflowFoundation/master/patch.png" width="640"/>
 
+[VVVV Forum Thread](https://discourse.vvvv.org/t/vl-workflowfoundation/17055)
+
 ## Links
 These links are from the original author who released the rehosting sample project, thanks!
 * Workflow Foundation Overview [Workflow Foundation Overview](https://andreioros.com/blog/windows-workflow-foundation-2017/)
