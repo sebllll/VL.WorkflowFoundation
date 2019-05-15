@@ -41,3 +41,6 @@ These links are from the original author who released the rehosting sample proje
 * [Custom Expression Editor](https://blogs.msdn.microsoft.com/cathyk/2009/11/05/implementing-a-custom-expression-editor/)
 * [Expression Editing Mechanics](https://blogs.msdn.microsoft.com/cathyk/2009/11/09/expression-editing-mechanics/)
 * [Avalon Edit](https://github.com/icsharpcode/AvalonEdit)
+
+## Nota bene:
+* compiling WF with Visual Studio 2017 needs the [Office/SharePoint "Workload" installed](https://developercommunity.visualstudio.com/content/problem/2476/cannot-build-project-that-contains-windows-workflo.html)

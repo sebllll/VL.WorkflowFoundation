@@ -31,6 +31,19 @@ namespace RehostedWorkflowDesigner
             Instance.RemoveMachine(stateMachine);
         }
 
+        //public static IStateMachineController ReNewStateMachine(IStateMachineController stateMachine, string name = null)
+        //{
+        //    Instance.RemoveMachine(stateMachine);
+
+
+        //    var result = Instance.AddMachine(name + "_new");
+            
+        //    if (!Instance.Visible)
+        //        Instance.Show();
+
+        //    return result;
+        //}
+
         public static void ShowEditor()
         {
             Instance.Show();

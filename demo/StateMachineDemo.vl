@@ -1,0 +1,491 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" Id="GB2VxUl5VdhM5rsl5IbjQg" LanguageVersion="2019.1.0-0318-g91ff9a39a4" Version="0.128">
+  <NugetDependency Id="RKFCmk1Lg5EP3I4IQegLTw" Location="VL.CoreLib" Version="0.35.21" />
+  <Patch Id="Th8hpfHvBF4Lk6VOwDCc9D">
+    <Canvas Id="NtZT52Xp5qNOXK0fF2H7kv" DefaultCategory="VVVV.Animation" CanvasType="FullCategory" />
+    <!--
+
+    ************************ Application ************************
+
+-->
+    <Node Name="Application" Bounds="100,100" Id="PwTVZ1mcAffPURbya6aGwh">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <FullNameCategoryReference ID="Primitive" />
+      </p:NodeReference>
+      <Patch Id="P1V14iuXph2PyWZFU9JlvA">
+        <Canvas Id="A37scqrJQL9LnbtspgjBbL" CanvasType="Group">
+          <Node Bounds="360,424,342,13" Id="ArWTUedBYqzO3jNxu16ebY">
+            <p:NodeReference LastCategoryFullName="WorkflowFoundation" LastSymbolSource="VL.WorkflowFoundation.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="StateMachine" />
+            </p:NodeReference>
+            <Pin Id="UsymxafSMwWLkU4qA3u91c" Name="File Path" Kind="InputPin" />
+            <Pin Id="MMJfD9BavsLPHBG3qdvKcn" Name="Name" Kind="InputPin" />
+            <Pin Id="Jq3iil5MaokO6lGHcNXeYu" Name="Start" Kind="InputPin" />
+            <Pin Id="QhEn4OK7YBkNZAfoAlI4Ve" Name="Stop" Kind="InputPin" />
+            <Pin Id="JmUVhpkXFIcOv9JwELd4Tx" Name="Load" Kind="InputPin" />
+            <Pin Id="MsUeNiDafnBNIp0iTT0BkC" Name="Save" Kind="InputPin" />
+            <Pin Id="T2ZMlKTcMLZQC0MZpv0gB9" Name="Machine" Kind="OutputPin" />
+          </Node>
+          <Pad Id="PDuxFJ2UqRlOP3IYxXLB6i" Comment="Name" Bounds="429,290,46,20" ShowValueBox="true" isIOBox="true" Value="Demo">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="SbKzznsfvelP4rSm19xJOP" Comment="File Path for Load/Save" Bounds="361,252,341,19" ShowValueBox="true" isIOBox="true" Value="DemoMachine.xaml">
+            <p:TypeAnnotation LastCategoryFullName="IO" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="Path" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Node Bounds="360,724,88,19" Id="DR44tBpF3s4M4tJr5ep6lj">
+            <p:NodeReference LastCategoryFullName="WorkflowFoundation" LastSymbolSource="VL.WorkflowFoundation.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="SendMessage" />
+              <PinReference Kind="InputPin" Name="Input" />
+            </p:NodeReference>
+            <Pin Id="LvV8oyskTCiOcIcgJy5HM1" Name="Input" Kind="InputPin" />
+            <Pin Id="FGQrZFkut4PPCKxfamCAUm" Name="Message" Kind="InputPin" />
+            <Pin Id="Q2rDUbwOTmZPwTnyWOqtJi" Name="Value" Kind="InputPin" />
+            <Pin Id="HnQmoivB9r7PSp1STZ3Oli" Name="Send" Kind="InputPin" />
+            <Pin Id="EnI28vjQOFRO2AuxafwmYF" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pad Id="Pl7s7MfBGAPQRRJdT3pcEL" Comment="Send" Bounds="446,699,40,19" ShowValueBox="true" isIOBox="true" Value="False">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="Boolean" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="S3pJH4e7g31OA5ciXKwkmo" Comment="" Bounds="390,676,29,20" ShowValueBox="true" isIOBox="true" Value="Run">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Node Bounds="361,956,88,19" Id="IV2erqplvwKOxQxvuCBRFU">
+            <p:NodeReference LastCategoryFullName="WorkflowFoundation" LastSymbolSource="VL.WorkflowFoundation.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="SendMessage" />
+              <PinReference Kind="InputPin" Name="Input" />
+            </p:NodeReference>
+            <Pin Id="CNJKQkPmqigNFm2s9eFZGD" Name="Input" Kind="InputPin" />
+            <Pin Id="KA7ptkxH9ZpNmwZBG0Kx1d" Name="Message" Kind="InputPin" />
+            <Pin Id="APxHkUYlFkdMWZ4koiz86V" Name="Value" Kind="InputPin" />
+            <Pin Id="UWwSQq4FNIHOiCwiF15mVD" Name="Send" Kind="InputPin" />
+            <Pin Id="IrIAIZSXreNPrhEm7CHIQw" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pad Id="AH8xWkeYUaENey5IgkZ3nk" Comment="Send" Bounds="446,932,40,19" ShowValueBox="true" isIOBox="true" Value="False">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="Boolean" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="SZzF91cBZhOMZ1FylgbAqW" Comment="" Bounds="391,897,35,20" ShowValueBox="true" isIOBox="true" Value="Stop">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="LUk7X2deAUUO7mKLTLQp1l" Comment="Load" Bounds="632,380,40,19" ShowValueBox="true" isIOBox="true" Value="False">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="Boolean" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="U522Z2mSPPfNWNfaSV6GwD" Comment="Save" Bounds="699,405,40,19" ShowValueBox="true" isIOBox="true" Value="False">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="Boolean" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="FsbucQOMs2HPeFSGDuvW00" Comment="Start" Bounds="497,321,40,19" ShowValueBox="true" isIOBox="true" Value="False">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="Boolean" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="VoVLqTTlJSdNaeDVyk1J96" Comment="Stop" Bounds="565,352,40,19" ShowValueBox="true" isIOBox="true" Value="False">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="Boolean" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Node Bounds="693,678,65,19" Id="Scbgd1dFZ0APgOY4ST4Sdm">
+            <p:NodeReference LastCategoryFullName="WorkflowFoundation" LastSymbolSource="VL.WorkflowFoundation.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="State" />
+            </p:NodeReference>
+            <Pin Id="PKztPL48wQjPrBAGdESN4I" Name="Input" Kind="InputPin" />
+            <Pin Id="EE8z53nxaInLFcNCD4h3zB" Name="Address" Kind="InputPin" />
+            <Pin Id="KdWy2KOSEPAOnfrZrrnZmQ" Name="Output" Kind="OutputPin" />
+            <Pin Id="HXWfbSB4kWaLoQxDsREcIe" Name="Entered" Kind="OutputPin" />
+            <Pin Id="S4gGuj1Kfj5O67ienYkhf6" Name="Closed" Kind="OutputPin" />
+            <Pin Id="JN2MICwLqd0PCtmSog0Pcx" Name="Is Active" Kind="OutputPin" />
+          </Node>
+          <Pad Id="QUelkNDlcYYM2isQabdpa2" Bounds="595,320,233,22" ShowValueBox="true" isIOBox="true" Value="same buttons as in the editor">
+            <p:TypeAnnotation>
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="GtlYeWJ35X7QRnmBLOx1dK" Comment="" Bounds="755,662,52,20" ShowValueBox="true" isIOBox="true" Value="Ready">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Node Bounds="693,795,65,19" Id="IfWInBTGyL0L3iHsGDyYJj">
+            <p:NodeReference LastCategoryFullName="WorkflowFoundation" LastSymbolSource="VL.WorkflowFoundation.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="State" />
+            </p:NodeReference>
+            <Pin Id="USmnjHhm0RZPcYT7PsIlPy" Name="Input" Kind="InputPin" />
+            <Pin Id="R71jfwQCRsxMe98FLXV5Rs" Name="Address" Kind="InputPin" />
+            <Pin Id="UtGWjsqKs1zMtsngc34P8g" Name="Output" Kind="OutputPin" />
+            <Pin Id="LMqNQRiMGlVOb4i5VkfTwl" Name="Entered" Kind="OutputPin" />
+            <Pin Id="QgONY41fxG2P9uAdMqM4h7" Name="Closed" Kind="OutputPin" />
+            <Pin Id="B849yl73ku6MEfAvx8w1Pq" Name="Is Active" Kind="OutputPin" />
+          </Node>
+          <Pad Id="EDTK22041ZhPEWDg7kiqEo" Comment="" Bounds="755,778,56,20" ShowValueBox="true" isIOBox="true" Value="Running">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Node Bounds="693,941,65,19" Id="EYgTH1YW6tCP8K1PVQQofY">
+            <p:NodeReference LastCategoryFullName="WorkflowFoundation" LastSymbolSource="VL.WorkflowFoundation.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="State" />
+            </p:NodeReference>
+            <Pin Id="CDLXymEptaNLgGBTzRlMlC" Name="Input" Kind="InputPin" />
+            <Pin Id="FUBG1Z0Efa8MStN6bNRezL" Name="Address" Kind="InputPin" />
+            <Pin Id="ComM95usV7JPUuMZiyPsFA" Name="Output" Kind="OutputPin" />
+            <Pin Id="IofcXJWGVVONFvDILNcPxz" Name="Entered" Kind="OutputPin" />
+            <Pin Id="MfT4o3A9N1GM28Njcso51V" Name="Closed" Kind="OutputPin" />
+            <Pin Id="CZMS2mTCMRcNQi0RQyUmc0" Name="Is Active" Kind="OutputPin" />
+          </Node>
+          <Pad Id="C1FXnPAoFx1QUWex6MUBgj" Comment="" Bounds="755,917,184,20" ShowValueBox="true" isIOBox="true" Value="Running/SubMachine/DelayState">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="Tvwqk5pqM5oQdp50lLeAvB" Bounds="841,974,269,46" ShowValueBox="true" isIOBox="true" Value="States of a nested state machine,&#xD;&#xA;note how the parent state stays active">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Overlay Id="CBSltETKymnMdTNh4V4is9" Name="State Machine Instance" Bounds="275,186,606,301">
+            <p:ColorIndex p:Type="Int32">0</p:ColorIndex>
+          </Overlay>
+          <Overlay Id="HNhggPzHZDUO52B5pkWijW" Name="Read States" Bounds="638,618,539,892" CursorPosition="88,187">
+            <p:ColorIndex p:Type="Int32">11</p:ColorIndex>
+          </Overlay>
+          <Overlay Id="PvpbG3sQR8dL9Je49QhaAN" Name="Send Messages" Bounds="277,617,289,579">
+            <p:ColorIndex p:Type="Int32">11</p:ColorIndex>
+          </Overlay>
+          <Node Bounds="693,1081,65,19" Id="PnoKVwNR4cbLY8Y5MtLwFV">
+            <p:NodeReference LastCategoryFullName="WorkflowFoundation" LastSymbolSource="VL.WorkflowFoundation.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="State" />
+            </p:NodeReference>
+            <Pin Id="RCYxoM6jqRBQGztHeG57AN" Name="Input" Kind="InputPin" />
+            <Pin Id="FTOf1uC71yQLSfTw1WU7J5" Name="Address" Kind="InputPin" />
+            <Pin Id="UhPXiwRyH8pNCFdeIDzFGE" Name="Output" Kind="OutputPin" />
+            <Pin Id="QQ8FVEL2N5NNdixXwEI0hh" Name="Entered" Kind="OutputPin" />
+            <Pin Id="IlSubMYXm8lNaF8Kgvz0lE" Name="Closed" Kind="OutputPin" />
+            <Pin Id="EjRHNWxsHSYQTss1NhWtfT" Name="Is Active" Kind="OutputPin" />
+          </Node>
+          <Pad Id="QamfsiF3gYfLMYBoBuGybu" Comment="" Bounds="755,1056,180,20" ShowValueBox="true" isIOBox="true" Value="Running/SubMachine/WaitState">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Node Bounds="361,841,88,19" Id="KD0QSnC8BFtL4mUf0yzzRQ">
+            <p:NodeReference LastCategoryFullName="WorkflowFoundation" LastSymbolSource="VL.WorkflowFoundation.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="SendMessage" />
+              <PinReference Kind="InputPin" Name="Input" />
+            </p:NodeReference>
+            <Pin Id="TdSXjfAu7elL3w9eEM4ZNQ" Name="Input" Kind="InputPin" />
+            <Pin Id="Jme46hAyYMoQIsVidOdPb8" Name="Message" Kind="InputPin" />
+            <Pin Id="Q2YMYTgr9xsLm44gxccQ3A" Name="Value" Kind="InputPin" />
+            <Pin Id="DXDgTxa5t6RM1LZ9lxhJXk" Name="Send" Kind="InputPin" />
+            <Pin Id="K0rTKR9ci1YMXSavexCj3B" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pad Id="AibfSa4EUopQHRHrdYMO6W" Comment="Send" Bounds="446,818,40,19" ShowValueBox="true" isIOBox="true" Value="False">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="Boolean" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="FgUemhXghMPOcKv5KlSKJc" Comment="" Bounds="391,782,93,20" ShowValueBox="true" isIOBox="true" Value="EndSubmachine">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="PXGsnM9lRlfPLeI2M9SSWq" Bounds="901,189,276,42" ShowValueBox="true" isIOBox="true" Value="Double click to add another StateMachine node to see its tab added to the editor">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Node Bounds="495,373,64,19" Id="JJrehT851z9QcZFxeigpQY">
+            <p:NodeReference LastCategoryFullName="Control" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="OnOpen" />
+            </p:NodeReference>
+            <Pin Id="JhlsZgo69BmMKvVtBJ2YPj" Name="Simulate" Kind="InputPin" />
+            <Pin Id="VNX6cfdnIajN0xltQPv9yX" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="1015,367,89,19" Id="To72FQWsKxJQVYAQ8W17Ts">
+            <p:NodeReference LastCategoryFullName="WorkflowFoundation" LastSymbolSource="VL.WorkflowFoundation.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="EditorWindow" />
+            </p:NodeReference>
+            <Pin Id="MzE2LWuLtpfN4GlG6I29kJ" Name="Show" Kind="InputPin" />
+            <Pin Id="CTqK2ng5loxNfwzHTjY5Bg" Name="Hide" Kind="InputPin" />
+          </Node>
+          <Pad Id="O9bOLM7UmJ4NLFqRlHXnGV" Comment="Show" Bounds="1008,335,40,19" ShowValueBox="true" isIOBox="true" Value="False">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="Boolean" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="BJfkmXKQ6PDMyD3T4ctFJY" Comment="Hide" Bounds="1108,336,40,19" ShowValueBox="true" isIOBox="true" Value="False">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="Boolean" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Overlay Id="G9mtxeuDGSQOlELEdcG916" Name="Editor" Bounds="976,277,227,142">
+            <p:ColorIndex p:Type="Int32">9</p:ColorIndex>
+          </Overlay>
+          <Node Bounds="884,675,81,19" Id="Llb86gIsvYeNnb2F3TRr07">
+            <p:NodeReference LastCategoryFullName="WorkflowFoundation" LastSymbolSource="VL.WorkflowFoundation.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="ActiveStates" />
+            </p:NodeReference>
+            <Pin Id="D6ZfQtV6iedN1volWlTx5I" Name="Input" Kind="InputPin" />
+            <Pin Id="KCuFSZftWa0OFIVDTHmSyW" Name="Output" Kind="OutputPin" />
+            <Pin Id="MD3ExXb2NG6NVSqL7yrpn0" Name="States" Kind="OutputPin" />
+          </Node>
+          <Pad Id="RBiLoownFIAPVb9jMyhpLw" Bounds="1019,715,121,22" ShowValueBox="true" isIOBox="true" Value="All active states ">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="M1zXEbGWXAePJsnYo3O0Xw" Comment="Closed" Bounds="755,729,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="LCShV9QcU0gQGuEbsWQojD" Comment="Entered" Bounds="755,749,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="TvbndhBHVCHLDYmg1iHa9g" Comment="Is Active" Bounds="755,709,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="CVzMBcuviruMY75mXphwFw" Comment="Closed" Bounds="755,866,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="Fk5a5ZkE7p0QZEvcYm7V7y" Comment="Entered" Bounds="755,886,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="CARIblmHpaUNV1UFRMWBKP" Comment="Is Active" Bounds="755,846,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="RG2jjPwRRdeQKkDTI7s4Z5" Comment="Closed" Bounds="755,1001,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="M30KypuOSE4QJJFetHEbpH" Comment="Entered" Bounds="755,1021,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="KGmmC8tbFVlNNw09IcR8qU" Comment="Is Active" Bounds="755,981,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="T7CNMmL3GCCPvBdqRXoVUO" Comment="Closed" Bounds="755,1151,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="D3HoueZLXpCNo2r5zisPmQ" Comment="Entered" Bounds="755,1171,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="HyaSk2WFyIcPEzQJB6c1gx" Comment="Is Active" Bounds="755,1131,35,15" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="693,1246,65,19" Id="FZ5sbdS3R3xLIMrrV4rlJ2">
+            <p:NodeReference LastCategoryFullName="WorkflowFoundation" LastSymbolSource="VL.WorkflowFoundation.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="State" />
+            </p:NodeReference>
+            <Pin Id="BR5kp8tJuqiLc1CQNXoNoU" Name="Input" Kind="InputPin" />
+            <Pin Id="A3Vhfc9xlbjPYxmmTD3tBy" Name="Address" Kind="InputPin" />
+            <Pin Id="CFS7KHY7KR7QcpRl76Y7qM" Name="Output" Kind="OutputPin" />
+            <Pin Id="CYHB2zOMP9kPEt5q6BlcmR" Name="Entered" Kind="OutputPin" />
+            <Pin Id="GlzCmkpXqkXMzUdL6xgNwL" Name="Closed" Kind="OutputPin" />
+            <Pin Id="REGSg6rtHREQWnFepYebmK" Name="Is Active" Kind="OutputPin" />
+          </Node>
+          <Pad Id="Fb7h6CiW4VoPLbINJ97ad0" Comment="" Bounds="755,1221,180,20" ShowValueBox="true" isIOBox="true" Value="Running/SubMachine/FinalState">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="ICTyhnrdgr6NQ6u8LJEzW6" Comment="Closed" Bounds="755,1316,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="CU7ptxUsCb0OH8lRwO8321" Comment="Entered" Bounds="755,1336,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="AiGq5qQHZhgL4OfuMoo96o" Comment="Is Active" Bounds="755,1296,35,15" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="361,1063,88,19" Id="MS4bvjrOcf3MO1xa15kv2R">
+            <p:NodeReference LastCategoryFullName="WorkflowFoundation" LastSymbolSource="VL.WorkflowFoundation.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="SendMessage" />
+              <PinReference Kind="InputPin" Name="Input" />
+            </p:NodeReference>
+            <Pin Id="A4EvLLmL2a6PwqicJpXzf5" Name="Input" Kind="InputPin" />
+            <Pin Id="MPhlQojNpiZNLiQISnMQKh" Name="Message" Kind="InputPin" />
+            <Pin Id="PHBBLhQUfy1Ob0KoIIeYBd" Name="Value" Kind="InputPin" />
+            <Pin Id="UGrHwRaPz1lLFYUYSN5S7m" Name="Send" Kind="InputPin" />
+            <Pin Id="OyIVYi9ahnQMbsIp5xHdg5" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pad Id="HgEGYi7FMocOFD08l0S4ho" Comment="Send" Bounds="446,1040,40,19" ShowValueBox="true" isIOBox="true" Value="False">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="Boolean" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="BofwXxWn1XVPiEsvhO8MCU" Comment="" Bounds="391,1004,93,20" ShowValueBox="true" isIOBox="true" Value="extra">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Node Bounds="693,1396,65,19" Id="FNqD9aNlPxDNEPLgafWWxw">
+            <p:NodeReference LastCategoryFullName="WorkflowFoundation" LastSymbolSource="VL.WorkflowFoundation.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="State" />
+            </p:NodeReference>
+            <Pin Id="SHF8VIcWWK4NzrCqnEMFAL" Name="Input" Kind="InputPin" />
+            <Pin Id="FKH3caJ853dPlzIfAuCcCL" Name="Address" Kind="InputPin" />
+            <Pin Id="SiIDE2IUQm5PE2zpHRWXh2" Name="Output" Kind="OutputPin" />
+            <Pin Id="TZrs6CF1g5KPUiLzUOhjTJ" Name="Entered" Kind="OutputPin" />
+            <Pin Id="AIklwkGaJroLxDrlDs7jeE" Name="Closed" Kind="OutputPin" />
+            <Pin Id="HbOSaOLlr29PyoBu5klcyn" Name="Is Active" Kind="OutputPin" />
+          </Node>
+          <Pad Id="D6U0rZpy4LZOHLbupCr3Mx" Comment="" Bounds="755,1371,180,20" ShowValueBox="true" isIOBox="true" Value="Processing">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="QnPSQoiuSNnNWWGb1QWT1s" Comment="Closed" Bounds="755,1466,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="TzvLUs9a1iyQDAtqdYu3ee" Comment="Entered" Bounds="755,1486,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="FpmK2AX2V8qMUAcx0ISg6r" Comment="Is Active" Bounds="755,1446,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="JSPqVsYemWLNT0EVUHUfwu" Comment="States" Bounds="962,763,155,92" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="-275,933,50,19" Id="ITupxhUuyInNoO4QdiSDee">
+            <p:NodeReference LastCategoryFullName="WorkflowFoundation" LastSymbolSource="VL.WorkflowFoundation.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="WorkflowFoundation" NeedsToBeDirectParent="true" />
+              <Choice Kind="ProcessNode" Name="Log" />
+            </p:NodeReference>
+            <Pin Id="NRwE1NKMiLvMzCBOmUp7cS" Name="StateMachine" Kind="InputPin" />
+            <Pin Id="CC7tWhCzBssL5VJJO81vbR" Name="MaxLogEntries" Kind="InputPin" />
+            <Pin Id="ASQ4zFd4vidPo88L0nA97l" Name="Max Execution Log Lines" Kind="OutputPin" />
+            <Pin Id="TqHo1Dd5wfWLbSRO9kJrk6" Name="logQueue" Kind="OutputPin" />
+          </Node>
+          <Pad Id="Dc6d7CyZhvDP8t4dznOBIN" Comment="logQueue" Bounds="-228,981,381,305" ShowValueBox="true" isIOBox="true">
+            <p:ValueBoxSettings>
+              <p:maxvisibleentries p:Type="Int32">26</p:maxvisibleentries>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="Vbr6ffcJvuSPxAFwmIygIz" Comment="MaxLogEntries" Bounds="-228,906,35,15" ShowValueBox="true" isIOBox="true" Value="26">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+              <Choice Kind="TypeFlag" Name="Integer32" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Node Bounds="-294,666,50,19" Id="GN9rgsWP4awOleIwJQQUIn">
+            <p:NodeReference LastCategoryFullName="WorkflowFoundation" LastSymbolSource="VL.WorkflowFoundation.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="GetInfo" />
+              <CategoryReference Kind="Category" Name="WorkflowFoundation" NeedsToBeDirectParent="true" />
+            </p:NodeReference>
+            <Pin Id="J0QSK9Kh5DzOgX5PQUJoOY" Name="StateMachine" Kind="InputPin" />
+            <Pin Id="N4aURfKz9o4PCxfsjlIKXh" Name="File Path" Kind="OutputPin" />
+            <Pin Id="JTnU5GPYLSMM0rSDN980Cg" Name="All States" Kind="OutputPin" />
+          </Node>
+          <Pad Id="Meekeg5PucpQJGe21eYk7q" Comment="All States" Bounds="-247,711,204,123" ShowValueBox="true" isIOBox="true">
+            <p:ValueBoxSettings>
+              <p:maxvisibleentries p:Type="Int32">20</p:maxvisibleentries>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Overlay Id="CnwghFT2sWiMm5Cpa1e9lQ" Name="Get Info from Statemachine" Bounds="-314,617,552,782">
+            <p:ColorIndex p:Type="Int32">11</p:ColorIndex>
+          </Overlay>
+        </Canvas>
+        <Patch Id="NNKX6B3TNqwLp74KKxoa95" Name="Create" />
+        <Patch Id="Ewv8ni1DfMqNSopNVI3Ktd" Name="Update" />
+        <ProcessDefinition Id="TW1V0VIlE5zLTM6IzqObch">
+          <Fragment Id="G99X0t4VlUdQChcn75nNSV" Patch="NNKX6B3TNqwLp74KKxoa95" Enabled="true" />
+          <Fragment Id="R5JhiEeeALtQRp0R8IdHoI" Patch="Ewv8ni1DfMqNSopNVI3Ktd" Enabled="true" />
+        </ProcessDefinition>
+        <Link Id="Etcqc2TNrGmPMTSRhvYgIP" Ids="PDuxFJ2UqRlOP3IYxXLB6i,MMJfD9BavsLPHBG3qdvKcn" />
+        <Link Id="Bfa3WYiiQQZNlq3pqAtSxf" Ids="T2ZMlKTcMLZQC0MZpv0gB9,LvV8oyskTCiOcIcgJy5HM1" />
+        <Link Id="IUCsL6cDeXSPHt9DhiOi9B" Ids="Pl7s7MfBGAPQRRJdT3pcEL,HnQmoivB9r7PSp1STZ3Oli" />
+        <Link Id="GzfupzetH9GN0YoX0dlb2D" Ids="S3pJH4e7g31OA5ciXKwkmo,FGQrZFkut4PPCKxfamCAUm" />
+        <Link Id="OpPj6QqKhGHMqF2qp8hNmF" Ids="AH8xWkeYUaENey5IgkZ3nk,UWwSQq4FNIHOiCwiF15mVD" />
+        <Link Id="PIBXhBnI635LBZ3AM4I8hF" Ids="SZzF91cBZhOMZ1FylgbAqW,KA7ptkxH9ZpNmwZBG0Kx1d" />
+        <Link Id="Q6jcrsW1DZvO6uGrMcASwf" Ids="LUk7X2deAUUO7mKLTLQp1l,JmUVhpkXFIcOv9JwELd4Tx" />
+        <Link Id="QBfu0nfk1GWLsjrJMmnfXx" Ids="U522Z2mSPPfNWNfaSV6GwD,MsUeNiDafnBNIp0iTT0BkC" />
+        <Link Id="LUgwtCP9lPCOiE2GVsPhI3" Ids="FsbucQOMs2HPeFSGDuvW00,JhlsZgo69BmMKvVtBJ2YPj" />
+        <Link Id="SJ7rK2gUNvKMBd8AfdTyLP" Ids="VoVLqTTlJSdNaeDVyk1J96,QhEn4OK7YBkNZAfoAlI4Ve" />
+        <Link Id="Tpc5B70r2hoOA6ayOr0R1i" Ids="GtlYeWJ35X7QRnmBLOx1dK,EE8z53nxaInLFcNCD4h3zB" />
+        <Link Id="FcYy72ysISFNRRX8pMYB27" Ids="EDTK22041ZhPEWDg7kiqEo,R71jfwQCRsxMe98FLXV5Rs" />
+        <Link Id="GynqgSLyuXjNXeJnzxwSwy" Ids="T2ZMlKTcMLZQC0MZpv0gB9,PKztPL48wQjPrBAGdESN4I" />
+        <Link Id="LHSajmZvzFnOQm0qo6bzMs" Ids="C1FXnPAoFx1QUWex6MUBgj,FUBG1Z0Efa8MStN6bNRezL" />
+        <Link Id="M0UHdTvwCOFO4iEUosWOmV" Ids="KdWy2KOSEPAOnfrZrrnZmQ,USmnjHhm0RZPcYT7PsIlPy" />
+        <Link Id="TerhE7TVg2JLaIy8EVXA1u" Ids="UtGWjsqKs1zMtsngc34P8g,CDLXymEptaNLgGBTzRlMlC" />
+        <Link Id="Um8zCZK5cNALTylreUmMmd" Ids="QamfsiF3gYfLMYBoBuGybu,FTOf1uC71yQLSfTw1WU7J5" />
+        <Link Id="G1Vtmw0jRw6MHsIKHAGvUp" Ids="ComM95usV7JPUuMZiyPsFA,RCYxoM6jqRBQGztHeG57AN" />
+        <Link Id="QffMZfaxsyDQADBNgaBP3e" Ids="AibfSa4EUopQHRHrdYMO6W,DXDgTxa5t6RM1LZ9lxhJXk" />
+        <Link Id="GdK3qjxXHhxMphdwF18h5h" Ids="FgUemhXghMPOcKv5KlSKJc,Jme46hAyYMoQIsVidOdPb8" />
+        <Link Id="AeXxAcp2qkDObD9fno6ZSP" Ids="EnI28vjQOFRO2AuxafwmYF,TdSXjfAu7elL3w9eEM4ZNQ" />
+        <Link Id="O2GvVYUh7N2NYqto2Xoia8" Ids="K0rTKR9ci1YMXSavexCj3B,CNJKQkPmqigNFm2s9eFZGD" />
+        <Link Id="MU4ciMMCUuqNuGxFIjQkJT" Ids="SbKzznsfvelP4rSm19xJOP,UsymxafSMwWLkU4qA3u91c" />
+        <Link Id="Fjn69qoyTIUNCtW08eFJFr" Ids="O9bOLM7UmJ4NLFqRlHXnGV,MzE2LWuLtpfN4GlG6I29kJ" />
+        <Link Id="PmfBysYImo6PsWHRnEDjK4" Ids="BJfkmXKQ6PDMyD3T4ctFJY,CTqK2ng5loxNfwzHTjY5Bg" />
+        <Link Id="VBuUFBHkvt9QNIslJWzMJo" Ids="T2ZMlKTcMLZQC0MZpv0gB9,D6ZfQtV6iedN1volWlTx5I" />
+        <Link Id="EF0tQcksqLPOko6RHLUSyQ" Ids="S4gGuj1Kfj5O67ienYkhf6,M1zXEbGWXAePJsnYo3O0Xw" />
+        <Link Id="NXgYxeKYy2ONCvKohUP1Ww" Ids="HXWfbSB4kWaLoQxDsREcIe,LCShV9QcU0gQGuEbsWQojD" />
+        <Link Id="RkcspsLAmd4NEVC9zFz0fJ" Ids="JN2MICwLqd0PCtmSog0Pcx,TvbndhBHVCHLDYmg1iHa9g" />
+        <Link Id="UlQqrvQgg1YQNHSaZ8tAg6" Ids="VNX6cfdnIajN0xltQPv9yX,Jq3iil5MaokO6lGHcNXeYu" />
+        <Link Id="LCvVgbVvw8JOU1pISDybLd" Ids="B849yl73ku6MEfAvx8w1Pq,CARIblmHpaUNV1UFRMWBKP" />
+        <Link Id="EKxYSfYbPHXMHjjFyaiQYs" Ids="QgONY41fxG2P9uAdMqM4h7,CVzMBcuviruMY75mXphwFw" />
+        <Link Id="HhhWJDQ2d8fPI7EZHRWw8E" Ids="LMqNQRiMGlVOb4i5VkfTwl,Fk5a5ZkE7p0QZEvcYm7V7y" />
+        <Link Id="Rk2MHajhoEFOQ1OABi3Bzp" Ids="CZMS2mTCMRcNQi0RQyUmc0,KGmmC8tbFVlNNw09IcR8qU" />
+        <Link Id="AU55Ttj36maP1eiQnJl1xY" Ids="MfT4o3A9N1GM28Njcso51V,RG2jjPwRRdeQKkDTI7s4Z5" />
+        <Link Id="Qs18Mbisvp5QbLq4im9SdN" Ids="IofcXJWGVVONFvDILNcPxz,M30KypuOSE4QJJFetHEbpH" />
+        <Link Id="DyBWRJkyP2iPyGDUp5wsUX" Ids="EjRHNWxsHSYQTss1NhWtfT,HyaSk2WFyIcPEzQJB6c1gx" />
+        <Link Id="ASx0D2dZoCmPkvWFC3hNfa" Ids="IlSubMYXm8lNaF8Kgvz0lE,T7CNMmL3GCCPvBdqRXoVUO" />
+        <Link Id="PAsuRTacYyxM8OSaLikrvD" Ids="QQ8FVEL2N5NNdixXwEI0hh,D3HoueZLXpCNo2r5zisPmQ" />
+        <Link Id="VmlJlmPtsdCNT2DzTe63Eo" Ids="Fb7h6CiW4VoPLbINJ97ad0,A3Vhfc9xlbjPYxmmTD3tBy" />
+        <Link Id="BV8hfbk9zJTPk4RbOD4C4B" Ids="REGSg6rtHREQWnFepYebmK,AiGq5qQHZhgL4OfuMoo96o" />
+        <Link Id="EXVLT6reCSfMm0MaT0P2wr" Ids="GlzCmkpXqkXMzUdL6xgNwL,ICTyhnrdgr6NQ6u8LJEzW6" />
+        <Link Id="UzbooEIQaFmLs9T7Iq53PL" Ids="CYHB2zOMP9kPEt5q6BlcmR,CU7ptxUsCb0OH8lRwO8321" />
+        <Link Id="ONsXuGinjTBM8caBO7lnoT" Ids="UhPXiwRyH8pNCFdeIDzFGE,BR5kp8tJuqiLc1CQNXoNoU" />
+        <Link Id="CWnBX7rEJC3LlMYIt1Ug8u" Ids="HgEGYi7FMocOFD08l0S4ho,UGrHwRaPz1lLFYUYSN5S7m" />
+        <Link Id="GJwlz949nSZLuH20klbgl1" Ids="BofwXxWn1XVPiEsvhO8MCU,MPhlQojNpiZNLiQISnMQKh" />
+        <Link Id="PgM7IQ8315dORV6FlEuweC" Ids="IrIAIZSXreNPrhEm7CHIQw,A4EvLLmL2a6PwqicJpXzf5" />
+        <Link Id="FXjbKjha2fJO4ZgXhAL1Ar" Ids="D6U0rZpy4LZOHLbupCr3Mx,FKH3caJ853dPlzIfAuCcCL" />
+        <Link Id="A44RojibE9IPrryonOZYG1" Ids="HbOSaOLlr29PyoBu5klcyn,FpmK2AX2V8qMUAcx0ISg6r" />
+        <Link Id="TeID3wtLK3ON5r7WI5KOyJ" Ids="AIklwkGaJroLxDrlDs7jeE,QnPSQoiuSNnNWWGb1QWT1s" />
+        <Link Id="MpWoyVnlBt7OtKHno3A0M3" Ids="TZrs6CF1g5KPUiLzUOhjTJ,TzvLUs9a1iyQDAtqdYu3ee" />
+        <Link Id="LrY8lRVTESJObveU5f9s0Z" Ids="CFS7KHY7KR7QcpRl76Y7qM,SHF8VIcWWK4NzrCqnEMFAL" />
+        <Link Id="NApfRlRwtkpLhHD3kcObSK" Ids="MD3ExXb2NG6NVSqL7yrpn0,JSPqVsYemWLNT0EVUHUfwu" />
+        <Link Id="A9owLNbr1YoP5rmKizNjd5" Ids="T2ZMlKTcMLZQC0MZpv0gB9,NRwE1NKMiLvMzCBOmUp7cS" />
+        <Link Id="NMYtq1lPLovMMS7QMl3ZHf" Ids="TqHo1Dd5wfWLbSRO9kJrk6,Dc6d7CyZhvDP8t4dznOBIN" />
+        <Link Id="MW7hxqrE0BoOmigRG9RbaH" Ids="Vbr6ffcJvuSPxAFwmIygIz,CC7tWhCzBssL5VJJO81vbR" />
+        <Link Id="Bx2YaPYDUMNNoEvMFXBsfS" Ids="JTnU5GPYLSMM0rSDN980Cg,Meekeg5PucpQJGe21eYk7q" />
+        <Link Id="ECpsbpmZb4VOe2YgmjBHiB" Ids="T2ZMlKTcMLZQC0MZpv0gB9,J0QSK9Kh5DzOgX5PQUJoOY" />
+      </Patch>
+    </Node>
+  </Patch>
+  <DocumentDependency Id="HDQrW1g7vdCOtj5NBhebf5" Location="../VL.WorkflowFoundation.vl" />
+</Document>

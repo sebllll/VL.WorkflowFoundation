@@ -286,7 +286,7 @@ namespace RehostedWorkflowDesigner.Views
             return ActivityXamlServices.Load(workflowStream, settings);
         }
 
-        Queue<string> executionLogQueue = new Queue<string>();
+        public Queue<string> executionLogQueue = new Queue<string>();
 
         private void InjectExecutionLog(ExecutionMessage m)
         {
